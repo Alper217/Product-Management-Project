@@ -25,7 +25,7 @@ namespace InventoryManagementSystem
             MaximizeBox = false;
             MinimizeBox = false;
             this.Text = "Online Store";
-        }
+        } //deneme
         private void CustomerMenu_Load(object sender, EventArgs e)
         {
             string userId = GlobalVariables.UserId;
