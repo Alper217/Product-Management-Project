@@ -1,0 +1,492 @@
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Data.SqlClient;
+using System.Drawing;
+using System.Linq;
+using System.Reflection;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace InventoryManagementSystem
+{
+   
+    public partial class AdministratorMenu : Form
+    {
+        string connectionString = $"Server=Alper;Database=InventoryManagementSystem;User Id=sa;Password=1;";
+        public AdministratorMenu()
+        {
+            InitializeComponent();
+        }
+       
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow row = this.dgvUM.Rows[e.RowIndex];
+                txtBID.Text = row.Cells["UserID"].Value.ToString();
+                txtBNS.Text = row.Cells["UserName"].Value.ToString();
+                txtBRole.Text = row.Cells["Role"].Value.ToString();
+            }
+        }
+
+        
+        //Page Openers
+        private void btnUM_Click(object sender, EventArgs e)
+        {
+
+            pnlPM.Visible = false;
+            pnlOM.Visible = false;
+            pnlSC.Visible = false;
+            pnlSM.Visible = false;
+            pnlCM.Visible = false;
+            pnlUM.Visible = true;
+            string query = "SELECT * FROM Users_Table";
+
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    SqlDataAdapter adapter = new SqlDataAdapter(command);
+                    DataTable dataTable = new DataTable();
+                    adapter.Fill(dataTable);
+                    dgvUM.DataSource = dataTable;
+                }
+            }
+
+        }
+        private void btnPM_Click(object sender, EventArgs e)
+        {
+            pnlUM.Visible = false;
+            pnlOM.Visible = false;
+            pnlSC.Visible = false;
+            pnlSM.Visible = false;
+            pnlCM.Visible = false;
+            pnlPM.Visible = true;
+            string query = "SELECT * FROM Products_Table";
+
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    SqlDataAdapter adapter = new SqlDataAdapter(command);
+                    DataTable dataTable = new DataTable();
+                    adapter.Fill(dataTable);
+                    dgvPM.DataSource = dataTable;
+                }
+            }
+        }
+        private void btnSC_Click(object sender, EventArgs e)
+        {
+            pnlUM.Visible = false;
+            pnlOM.Visible = false;
+            pnlSM.Visible = false;
+            pnlCM.Visible = false;
+            pnlPM.Visible = false;
+            pnlSC.Visible = true;
+            string query = "SELECT Products_Table.ProductID, Products_Table.Dealer, Products_Table.ProductName, Products_Table.StockAmount FROM Products_Table";
+
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    SqlDataAdapter adapter = new SqlDataAdapter(command);
+                    DataTable dataTable = new DataTable();
+                    adapter.Fill(dataTable);
+                    dgvSC.DataSource = dataTable;
+                }
+            }
+
+        }
+        private void btnOM_Click(object sender, EventArgs e)
+        {
+            pnlUM.Visible = false;
+            pnlSC.Visible = false;
+            pnlSM.Visible = false;
+            pnlCM.Visible = false;
+            pnlPM.Visible = false;
+            pnlOM.Visible = true;
+
+            string query = "SELECT Customers_Table.CustomerID, Customers_Table.CustomerName, Orders_Table.OrderDate, " +
+                           "Orders_Table.OrderID, Orders_Table.OrderStatus " +
+                           "FROM Orders_Table INNER JOIN Customers_Table ON Orders_Table.CustomerID = Customers_Table.CustomerID;";
+
+            DataTable dataTable = new DataTable();
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        connection.Open();
+                        SqlDataAdapter adapter = new SqlDataAdapter(command);
+                        adapter.Fill(dataTable);
+                    }
+                }
+
+                if (dataTable.Rows.Count > 0)
+                {
+                    dgvOM.DataSource = dataTable;
+                    dgvOM.Refresh();
+                }
+                else
+                {
+                    MessageBox.Show("Tablo boş. Gösterilecek veri bulunamadı.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Veri yüklenirken bir hata oluştu: " + ex.Message, "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+        }
+        private void btnSM_Click(object sender, EventArgs e)
+        {
+            pnlUM.Visible = false;
+            pnlOM.Visible = false;
+            pnlSC.Visible = false;
+            pnlCM.Visible = false;
+            pnlPM.Visible = false;
+            pnlSM.Visible = true;
+            string query = "SELECT  Products_Table.ProductID ,Products_Table.Dealer, Products_Table.ProductName, Products_Table.SupplierID, " +
+                "Suppliers_Table.SupplierName, Suppliers_Table.CommInfo FROM Suppliers_Table INNER JOIN Products_Table" +
+                " ON Suppliers_Table.SupplierID = Products_Table.SupplierID;";
+
+            DataTable dataTable = new DataTable();
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    connection.Open();
+                    SqlDataAdapter adapter = new SqlDataAdapter(command);
+                    adapter.Fill(dataTable);
+                }
+            }
+            dgvSM.DataSource = dataTable;
+        }
+        private void btnCM_Click(object sender, EventArgs e)
+        {
+            pnlUM.Visible = false;
+            pnlOM.Visible = false;
+            pnlSC.Visible = false;
+            pnlSM.Visible = false;
+            pnlPM.Visible = false;
+            pnlCM.Visible = true;
+            string query = "SELECT Customers_Table.CustomerID, Customers_Table.CustomerName,Orders_Table.OrderDate," +
+                " Orders_Table.OrderID, Orders_Table.OrderStatus FROM Customers_Table INNER JOIN Orders_Table ON Customers_Table.CustomerID = Orders_Table.CustomerID;";
+                DataTable dataTable = new DataTable();
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    connection.Open();
+                    SqlDataAdapter adapter = new SqlDataAdapter(command);
+                    adapter.Fill(dataTable);
+                }
+            }
+            dgvCM.DataSource = dataTable;
+        }
+        // Product Management Buttons
+        private void btnAddProduct_Click(object sender, EventArgs e)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                    connection.Open();
+                    string query = "INSERT INTO Products_Table (ProductName, StockAmount, UnitPrice, SupplierID, Dealer) VALUES (@ProductName, @StockAmount, @UnitPrice, @SupplierID, @Dealer)";
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                    command.Parameters.AddWithValue("@ProductName", txtBPN.Text);
+                    command.Parameters.AddWithValue("@StockAmount", txtBSA.Text);
+                    command.Parameters.AddWithValue("@UnitPrice", txtBUP.Text);
+                    command.Parameters.AddWithValue("@Dealer", txtBDealer.Text);
+                    command.Parameters.AddWithValue("@SupplierID", txtBSI.Text);
+                    int rowsAffected = command.ExecuteNonQuery();
+                        if (rowsAffected > 0)
+                        {
+                            MessageBox.Show("Veri başarıyla eklendi!");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Veri eklenirken bir hata oluştu!");
+                        }
+                    }
+            }
+        }
+        private void btnUpdateProduct_Click(object sender, EventArgs e)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                string query = "UPDATE Products_Table SET ProductName = @ProductName, StockAmount = @StockAmount, UnitPrice = @UnitPrice, SupplierID = @SupplierID, Dealer = @Dealer WHERE ProductID = @ProductID";
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@ProductName", txtBPN.Text);
+                    command.Parameters.AddWithValue("@StockAmount", txtBSA.Text);
+                    command.Parameters.AddWithValue("@UnitPrice", txtBUP.Text);
+                    command.Parameters.AddWithValue("@SupplierID", txtBSI.Text);
+                    command.Parameters.AddWithValue("@Dealer", txtBDealer.Text);
+                    command.Parameters.AddWithValue("@ProductID", txtBUpdateID.Text);
+                    int rowsAffected = command.ExecuteNonQuery();
+                    if (rowsAffected > 0)
+                    {
+                        MessageBox.Show("Veri başarıyla güncellendi!");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Veri güncellenirken bir hata oluştu!");
+                    }
+                }
+            }
+        }
+        private void btnDeleteProduct_Click(object sender, EventArgs e)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                string query = "DELETE FROM Products_Table WHERE ProductName = @ProductName";
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    // Silinecek verinin ID'sini parametre olarak ekleyin
+                    command.Parameters.AddWithValue("@ProductName",txtBPN.Text);
+
+                    // Sorguyu çalıştırın
+                    int rowsAffected = command.ExecuteNonQuery();
+
+                    if (rowsAffected > 0)
+                    {
+                        MessageBox.Show("Data deleted successfully!");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Data with the specified name could not be found or could not be deleted!");
+                    }
+                }
+            }
+        }
+        //Supplier Management Buttons
+        private void btnUpdSupplier_Click(object sender, EventArgs e)
+        {
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                string selectedValue = listBox2.SelectedItem.ToString();
+                string query = $"UPDATE Products_Table SET SupplierID = @NewSupplierID WHERE ProductID = @ProductID";
+                int supplierID;
+                if (int.TryParse(txtBUPS.Text, out supplierID))
+                {
+                    using (SqlCommand comm = new SqlCommand(query, conn))
+                    {
+                        comm.Parameters.AddWithValue("@NewSupplierID", selectedValue);
+                        comm.Parameters.AddWithValue("@ProductID", supplierID);
+                        int rowsAffected = comm.ExecuteNonQuery();
+                        if (rowsAffected > 0)
+                        {
+                            MessageBox.Show("Rol başarıyla güncellendi.");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Rol güncelleme işlemi başarısız oldu.");
+                        }
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Geçersiz SupplierID.");
+                }
+            }
+        }
+        //User Management Buttons
+        private void btnChange_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    string selectedValue = listBox1.SelectedItem.ToString();
+                    string query = $"UPDATE Users_Table SET Role = @NewRole WHERE UserName = @Username";
+                    using (SqlCommand comm = new SqlCommand(query, conn))
+                    {
+                        comm.Parameters.AddWithValue("@NewRole", selectedValue);
+                        comm.Parameters.AddWithValue("@Username", txtBNS.Text);
+                        int rowsAffected = comm.ExecuteNonQuery();
+                        if (rowsAffected > 0)
+                        {
+                            MessageBox.Show("Rol başarıyla güncellendi.");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Rol güncelleme işlemi başarısız oldu.");
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Bir hata oluştu: " + ex.Message);
+            }
+        }
+        private void btnSelect_Click(object sender, EventArgs e)
+        {
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    string query = $"SELECT * FROM Users_Table WHERE UserName = '{txtBNS.Text}'";
+                    using (SqlCommand comm = new SqlCommand(query, conn))
+                    {
+                        SqlDataReader reader = comm.ExecuteReader();
+                        if (reader.Read())
+                        {
+                            txtBID.Text = reader.GetValue(0).ToString();
+                            txtBNS.Text = (string)reader.GetValue(1);
+                            txtBRole.Text = (string)reader.GetValue(3);
+                        }
+                        else
+                            MessageBox.Show("User Not Found.");
+                    }
+                    conn.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Something went wrong: " + ex.Message);
+            }
+
+        }
+        //Stock Control Buttons
+        private void btnControlStock_Click(object sender, EventArgs e)
+        {
+            string query = "SELECT ProductName FROM Products_Table WHERE StockAmount < 5";
+            List<string> productsLowStock = new List<string>(); 
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand command = new SqlCommand(query, connection);
+                connection.Open();
+
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        string productName = reader.GetString(0);
+                        productsLowStock.Add(productName); 
+                    }
+                }
+            }
+            if (productsLowStock.Count > 0)
+            {
+                string message = "The stocks of the following products are about to run out:\n";
+                foreach (string productName in productsLowStock)
+                {
+                    message += "•" + productName + "\n";
+                }
+                lblStockControl.Text = message;
+            }
+            else
+            {
+                lblStockControl.Text = "No products with low stock.";
+            }
+        }
+        //Customer Management Buttons
+        private void btnSearchCN_Click(object sender, EventArgs e)
+        {
+            string customerName = txtBCNS.Text.Trim();
+            if (string.IsNullOrEmpty(customerName))
+            {
+                ShowAllRecords();
+            }
+            string query = "SELECT Customers_Table.CustomerID, Customers_Table.CustomerName, Orders_Table.OrderDate, " +
+                "Orders_Table.OrderID, Orders_Table.OrderStatus FROM Customers_Table INNER JOIN Orders_Table ON " +
+                "Customers_Table.CustomerID = Orders_Table.CustomerID WHERE Customers_Table.CustomerName LIKE @CustomerName";
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@CustomerName", "%" + customerName + "%");
+                    try
+                    {
+                        connection.Open();
+                        SqlDataAdapter adapter = new SqlDataAdapter(command);
+                        DataTable table = new DataTable();
+                        adapter.Fill(table);
+                        dgvCM.DataSource = table;
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("An error occurred: " + ex.Message);
+                    }
+                }
+            }
+        }
+        private void ShowAllRecords()
+        {
+            string query = "SELECT Customers_Table.CustomerID, Customers_Table.CustomerName, Orders_Table.OrderDate, " +
+                "Orders_Table.OrderID, Orders_Table.OrderStatus FROM Customers_Table INNER JOIN Orders_Table ON " +
+                "Customers_Table.CustomerID = Orders_Table.CustomerID";
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    try
+                    {
+                        connection.Open();
+                        SqlDataAdapter adapter = new SqlDataAdapter(command);
+                        DataTable table = new DataTable();
+                        adapter.Fill(table);
+                        dgvCM.DataSource = table;
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("An error occurred: " + ex.Message);
+                    }
+                }
+            }
+        }//FOR btnSearchCN_Click
+        // Order Management Button
+        private void btnStatusChange_Click(object sender, EventArgs e)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                string selectedChoice = listBox3.SelectedItem.ToString();
+                string query = "UPDATE Orders_Table SET OrderStatus = @OrderStatus WHERE OrderID = @OrderID";
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@OrderStatus", selectedChoice);
+                    int orderID;
+                    if (int.TryParse(txtBUOS.Text, out orderID))
+                    {
+                        command.Parameters.AddWithValue("@OrderID", orderID);
+                        int rowsAffected = command.ExecuteNonQuery();
+                        if (rowsAffected > 0)
+                        {
+                            MessageBox.Show("Veri başarıyla güncellendi!");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Belirtilen ID'ye sahip sipariş bulunamadı!");
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Geçersiz OrderID girdiniz!");
+                    }
+                }
+            }
+
+        }
+    }
+
+}
+
+
+
