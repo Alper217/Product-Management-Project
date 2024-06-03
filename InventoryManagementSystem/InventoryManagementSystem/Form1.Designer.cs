@@ -63,10 +63,16 @@
             this.pnlLogIn = new System.Windows.Forms.Panel();
             this.LinkRPass = new System.Windows.Forms.LinkLabel();
             this.lblBack = new System.Windows.Forms.Button();
+            this.pnlEmail = new System.Windows.Forms.Panel();
+            this.btnSendMail = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.textBox2 = new System.Windows.Forms.TextBox();
             this.pnlSıgnOrLog.SuspendLayout();
             this.pnlPersonalInfo.SuspendLayout();
             this.pnlSıgnIn.SuspendLayout();
             this.pnlLogIn.SuspendLayout();
+            this.pnlEmail.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnUserSıgnIn
@@ -415,7 +421,7 @@
             this.pnlLogIn.Controls.Add(this.lblPasswordLogIn);
             this.pnlLogIn.Controls.Add(this.lblUserName);
             this.pnlLogIn.Controls.Add(this.chkboxShowPassword1);
-            this.pnlLogIn.Location = new System.Drawing.Point(508, 226);
+            this.pnlLogIn.Location = new System.Drawing.Point(316, 102);
             this.pnlLogIn.Name = "pnlLogIn";
             this.pnlLogIn.Size = new System.Drawing.Size(267, 195);
             this.pnlLogIn.TabIndex = 5;
@@ -448,6 +454,56 @@
             this.lblBack.UseVisualStyleBackColor = false;
             this.lblBack.Click += new System.EventHandler(this.lblBack_Click);
             // 
+            // pnlEmail
+            // 
+            this.pnlEmail.BackColor = System.Drawing.Color.LightGray;
+            this.pnlEmail.Controls.Add(this.btnSendMail);
+            this.pnlEmail.Controls.Add(this.label3);
+            this.pnlEmail.Controls.Add(this.label2);
+            this.pnlEmail.Controls.Add(this.textBox2);
+            this.pnlEmail.Location = new System.Drawing.Point(175, 71);
+            this.pnlEmail.Name = "pnlEmail";
+            this.pnlEmail.Size = new System.Drawing.Size(575, 422);
+            this.pnlEmail.TabIndex = 11;
+            this.pnlEmail.Visible = false;
+            // 
+            // btnSendMail
+            // 
+            this.btnSendMail.Location = new System.Drawing.Point(187, 226);
+            this.btnSendMail.Name = "btnSendMail";
+            this.btnSendMail.Size = new System.Drawing.Size(188, 32);
+            this.btnSendMail.TabIndex = 3;
+            this.btnSendMail.Text = "Reset";
+            this.btnSendMail.UseVisualStyleBackColor = true;
+            this.btnSendMail.Click += new System.EventHandler(this.btnSendMail_Click);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(104, 159);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(353, 13);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "We need your email address so we can send you the password reset link.";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label2.Location = new System.Drawing.Point(241, 128);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(69, 24);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "E-Mail";
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(130, 177);
+            this.textBox2.Multiline = true;
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(296, 33);
+            this.textBox2.TabIndex = 0;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -456,6 +512,7 @@
             this.BackgroundImage = global::InventoryManagementSystem.Properties.Resources.online_smartphone_shopping_banner_vector;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(894, 590);
+            this.Controls.Add(this.pnlEmail);
             this.Controls.Add(this.pnlSıgnIn);
             this.Controls.Add(this.pnlLogIn);
             this.Controls.Add(this.pnlPersonalInfo);
@@ -471,6 +528,8 @@
             this.pnlSıgnIn.PerformLayout();
             this.pnlLogIn.ResumeLayout(false);
             this.pnlLogIn.PerformLayout();
+            this.pnlEmail.ResumeLayout(false);
+            this.pnlEmail.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -511,6 +570,11 @@
         private System.Windows.Forms.ListBox lbGender;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Panel pnlEmail;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button btnSendMail;
     }
 }
 

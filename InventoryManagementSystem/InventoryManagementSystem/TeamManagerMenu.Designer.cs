@@ -31,7 +31,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TeamManagerMenu));
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.dgvOrders = new System.Windows.Forms.DataGridView();
             this.btnSelect = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnQuit = new System.Windows.Forms.Button();
@@ -44,11 +43,14 @@
             this.lblWelcomeName = new System.Windows.Forms.Label();
             this.txtBStatus = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.dgvOrders = new System.Windows.Forms.DataGridView();
+            this.txtBcustomerID = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvOrders)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCustomers)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvOrders)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBox2
@@ -72,19 +74,10 @@
             this.pictureBox3.TabIndex = 2;
             this.pictureBox3.TabStop = false;
             // 
-            // dgvOrders
-            // 
-            this.dgvOrders.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvOrders.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvOrders.Location = new System.Drawing.Point(487, 170);
-            this.dgvOrders.Name = "dgvOrders";
-            this.dgvOrders.Size = new System.Drawing.Size(451, 386);
-            this.dgvOrders.TabIndex = 3;
-            // 
             // btnSelect
             // 
             this.btnSelect.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnSelect.Location = new System.Drawing.Point(336, 67);
+            this.btnSelect.Location = new System.Drawing.Point(375, 67);
             this.btnSelect.Name = "btnSelect";
             this.btnSelect.Size = new System.Drawing.Size(75, 26);
             this.btnSelect.TabIndex = 4;
@@ -101,6 +94,7 @@
             this.btnUpdate.TabIndex = 5;
             this.btnUpdate.Text = "Update";
             this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // btnQuit
             // 
@@ -115,9 +109,9 @@
             // 
             // txtBID
             // 
-            this.txtBID.Location = new System.Drawing.Point(349, 41);
+            this.txtBID.Location = new System.Drawing.Point(340, 41);
             this.txtBID.Name = "txtBID";
-            this.txtBID.Size = new System.Drawing.Size(44, 20);
+            this.txtBID.Size = new System.Drawing.Size(53, 20);
             this.txtBID.TabIndex = 8;
             // 
             // label1
@@ -125,7 +119,7 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.DarkSlateGray;
             this.label1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label1.Location = new System.Drawing.Point(346, 25);
+            this.label1.Location = new System.Drawing.Point(337, 25);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(47, 13);
             this.label1.TabIndex = 10;
@@ -133,10 +127,13 @@
             // 
             // dgvCustomers
             // 
+            this.dgvCustomers.AllowUserToAddRows = false;
+            this.dgvCustomers.AllowUserToDeleteRows = false;
             this.dgvCustomers.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvCustomers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvCustomers.Location = new System.Drawing.Point(12, 170);
             this.dgvCustomers.Name = "dgvCustomers";
+            this.dgvCustomers.ReadOnly = true;
             this.dgvCustomers.Size = new System.Drawing.Size(460, 386);
             this.dgvCustomers.TabIndex = 12;
             // 
@@ -146,7 +143,7 @@
             this.label3.BackColor = System.Drawing.Color.DarkSlateGray;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.label3.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label3.Location = new System.Drawing.Point(660, 126);
+            this.label3.Location = new System.Drawing.Point(632, 133);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(160, 20);
             this.label3.TabIndex = 13;
@@ -158,7 +155,7 @@
             this.label4.BackColor = System.Drawing.Color.DarkSlateGray;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.label4.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label4.Location = new System.Drawing.Point(119, 126);
+            this.label4.Location = new System.Drawing.Point(140, 133);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(183, 20);
             this.label4.TabIndex = 14;
@@ -194,7 +191,6 @@
             // 
             this.txtBStatus.Location = new System.Drawing.Point(621, 35);
             this.txtBStatus.Name = "txtBStatus";
-            this.txtBStatus.ReadOnly = true;
             this.txtBStatus.Size = new System.Drawing.Size(75, 20);
             this.txtBStatus.TabIndex = 17;
             // 
@@ -207,12 +203,43 @@
             this.pictureBox1.TabIndex = 18;
             this.pictureBox1.TabStop = false;
             // 
+            // dgvOrders
+            // 
+            this.dgvOrders.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvOrders.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvOrders.Location = new System.Drawing.Point(478, 170);
+            this.dgvOrders.Name = "dgvOrders";
+            this.dgvOrders.Size = new System.Drawing.Size(460, 386);
+            this.dgvOrders.TabIndex = 19;
+            // 
+            // txtBcustomerID
+            // 
+            this.txtBcustomerID.Location = new System.Drawing.Point(419, 41);
+            this.txtBcustomerID.Name = "txtBcustomerID";
+            this.txtBcustomerID.ReadOnly = true;
+            this.txtBcustomerID.Size = new System.Drawing.Size(53, 20);
+            this.txtBcustomerID.TabIndex = 20;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.DarkSlateGray;
+            this.label2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label2.Location = new System.Drawing.Point(416, 25);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(65, 13);
+            this.label2.TabIndex = 21;
+            this.label2.Text = "Customer ID";
+            // 
             // TeamManagerMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkSlateGray;
             this.ClientSize = new System.Drawing.Size(950, 568);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.txtBcustomerID);
+            this.Controls.Add(this.dgvOrders);
             this.Controls.Add(this.txtBStatus);
             this.Controls.Add(this.lblWelcomeName);
             this.Controls.Add(this.lbOrderStatus);
@@ -224,7 +251,6 @@
             this.Controls.Add(this.btnQuit);
             this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.btnSelect);
-            this.Controls.Add(this.dgvOrders);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.pictureBox1);
@@ -235,9 +261,9 @@
             this.Load += new System.EventHandler(this.TeamManagerMenu_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvOrders)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCustomers)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvOrders)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -246,7 +272,6 @@
         #endregion
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox3;
-        private System.Windows.Forms.DataGridView dgvOrders;
         private System.Windows.Forms.Button btnSelect;
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.Button btnQuit;
@@ -259,5 +284,8 @@
         private System.Windows.Forms.Label lblWelcomeName;
         private System.Windows.Forms.TextBox txtBStatus;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.DataGridView dgvOrders;
+        private System.Windows.Forms.TextBox txtBcustomerID;
+        private System.Windows.Forms.Label label2;
     }
 }

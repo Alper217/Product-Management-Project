@@ -15,9 +15,11 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace InventoryManagementSystem
 {
+    
     public partial class CustomerMenu : Form
     {
         string connectionString = "Server=Alper;Database=InventoryManagementSystem;User Id=sa;Password=1;";
+      
         public CustomerMenu()
         {
             InitializeComponent();
@@ -28,7 +30,7 @@ namespace InventoryManagementSystem
         } //deneme
         private void CustomerMenu_Load(object sender, EventArgs e)
         {
-            string userId = GlobalVariables.UserId;
+            int userId = GlobalVariables.UserId;
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 conn.Open();
@@ -73,7 +75,7 @@ namespace InventoryManagementSystem
         }
         private void btnMSC_Click(object sender, EventArgs e)
         {
-            string userId = GlobalVariables.UserId;
+            int userId = GlobalVariables.UserId;
             pnlMyShoppingCart.Visible = true;
 
             string query = "SELECT ProductID, ProductName, Price, Amount, TotalPrice FROM CardList WHERE UserId = @UserID";
@@ -215,7 +217,7 @@ namespace InventoryManagementSystem
         }
         private void btnAddCart_Click_1(object sender, EventArgs e)
         {
-            string userId = GlobalVariables.UserId;
+            int userId = GlobalVariables.UserId;
             string userName = GlobalVariables.UserName;
 
             if (dgvSeeProducts.SelectedRows.Count > 0)
@@ -294,8 +296,7 @@ namespace InventoryManagementSystem
         }
         private void btnBuy_Click(object sender, EventArgs e)
         {
-
-            string userId = GlobalVariables.UserId;
+            int userId = GlobalVariables.UserId;
             string userName = GlobalVariables.UserName;
 
             if (dgvMHC.Rows.Count > 0)
@@ -328,6 +329,21 @@ namespace InventoryManagementSystem
                     MessageBox.Show("Order placed successfully!");
 
                     conn.Close();
+                }
+                using (SqlConnection connection2 = new SqlConnection(connectionString))
+                {
+                    string currentTime = DateTime.Now.ToString();
+                    connection2.Open();
+                        string queryStatus = "INSERT INTO OrderInformations_Table (OrderID, CustomerID, ProcessDate, Status, ByWho) VALUES (@OrderID, @CustomerID, @ProcessDate, 'Order Taken', @ByWho);";
+                        using (SqlCommand command = new SqlCommand(queryStatus, connection2))
+                        {
+                            command.Parameters.AddWithValue("@OrderID", txtBSelected.Text);
+                            command.Parameters.AddWithValue("@CustomerID", GlobalVariablesCustomer.CustomerId);
+                            command.Parameters.AddWithValue("@ProcessDate", currentTime);
+                            command.Parameters.AddWithValue("@ByWho",GlobalVariables.UserName);
+                            command.ExecuteNonQuery();
+                        }
+                        connection2.Close();
                 }
             }
             else
@@ -389,20 +405,23 @@ namespace InventoryManagementSystem
         private void btnExit_Click_1(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show("Do you wanna be quit", "Attention", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
             if (result == DialogResult.Yes)
             {
-                // Form1'i aç
                 Form1 form1 = new Form1();
                 form1.Show();
-
-                // Mevcut formu kapat
                 this.Close();
             }
             else if (result == DialogResult.No)
             {
-                // No butonuna basıldı
                 MessageBox.Show("You pressed No.");
+            }
+        }
+        private void dgvMHC_CellClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                string selectedID = dgvMHC.Rows[e.RowIndex].Cells["ProductID"].Value.ToString();
+                txtBSelected.Text = selectedID;
             }
         }
         // Kullanıcı Ayarları kısmı

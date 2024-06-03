@@ -5,6 +5,8 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
+using System.Net.Mail;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -13,13 +15,18 @@ namespace InventoryManagementSystem
 {
     public partial class Form1 : Form
     {
-
         SqlConnection conn;
-        public string UserId { get; set; }
+        public int UserId { get; set; }
+        public string UserName { get; set; }
+        public int customerID { get; set; }
+        public static class GlobalVariablesCustomer
+        {
+            public static int CustomerId { get; set; }
+        }
         public static class GlobalVariables
         {
             public static string UserName {  get; set; }
-            public static string UserId { get; set; }
+            public static int UserId { get; set; }
         }
         public Form1()
         {
@@ -55,7 +62,6 @@ namespace InventoryManagementSystem
             pnlSıgnIn.Visible = true;
             pnlSıgnOrLog.Visible=false;
         }
-
         private void btnLogIn_Click(object sender, EventArgs e)
         {
             pnlPersonalInfo.Visible = false;
@@ -63,7 +69,6 @@ namespace InventoryManagementSystem
             pnlLogIn.Visible = true;
             pnlSıgnOrLog.Visible = false;
         }
-
         // Giriş ve Kayıt bölümü ile alakalı 
         private void chkboxShowPassword1_CheckedChanged(object sender, EventArgs e)
         {
@@ -91,6 +96,7 @@ namespace InventoryManagementSystem
             string sql = "SELECT * FROM Users_Table WHERE UserName=@username AND Password=@password";
             SqlParameter prm1 = new SqlParameter("username", txtBoxUsername.Text);
             SqlParameter prm2 = new SqlParameter("password", txtBoxPassword.Text);
+
             if (string.IsNullOrEmpty(txtBoxUsername.Text.Trim()) || string.IsNullOrEmpty(txtBoxPassword.Text.Trim()))
             {
                 MessageBox.Show("Please enter a valid value.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -107,13 +113,29 @@ namespace InventoryManagementSystem
 
                 if (dt.Rows.Count > 0)
                 {
-                    // Retrieve the user ID from the query result and assign it to a string
-                    string userId = dt.Rows[0]["UserID"].ToString();
+                    int userId = (int)dt.Rows[0]["UserID"];
                     GlobalVariables.UserId = userId;
                     string userName = dt.Rows[0]["UserName"].ToString();
                     GlobalVariables.UserName = userName;
+
                     // Retrieve the user role
                     string userRole = dt.Rows[0]["Role"].ToString();
+
+                    // Retrieve CustomerID from Customers_Table using UserID
+                    string customerSql = "SELECT CustomerID FROM Customers_Table WHERE UserID=@userId";
+                    SqlParameter prmCustomer = new SqlParameter("userId", userId);
+                    SqlCommand customerCommand = new SqlCommand(customerSql, conn);
+                    customerCommand.Parameters.Add(prmCustomer);
+
+                    DataTable customerDt = new DataTable();
+                    SqlDataAdapter customerDa = new SqlDataAdapter(customerCommand);
+                    customerDa.Fill(customerDt);
+
+                    if (customerDt.Rows.Count > 0)
+                    {
+                        int customerId = Convert.ToInt32(customerDt.Rows[0]["CustomerID"]);
+                        GlobalVariablesCustomer.CustomerId = customerId;
+                    }
 
                     if (userRole == "Administrator")
                     {
@@ -127,12 +149,6 @@ namespace InventoryManagementSystem
                         customerMenu.Show();
                         this.Hide();
                     }
-                    //else if (userRole == "Employee")
-                    //{
-                    //    EmployeeMenu empMenu = new EmployeeMenu();
-                    //    empMenu.Show();
-                    //    this.Hide();
-                    //}
                     else if (userRole == "Team Manager")
                     {
                         TeamManagerMenu teamMenu = new TeamManagerMenu();
@@ -142,15 +158,15 @@ namespace InventoryManagementSystem
                 }
                 else
                 {
-                    MessageBox.Show("Invalid username or password","Attention",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+                    MessageBox.Show("Invalid username or password", "Attention", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
-               
             }
         }
+
         private void btnContinueSıgnIn_Click_1(object sender, EventArgs e)
         {
             pnlSıgnIn.Visible = false;
-            pnlPersonalInfo.Visible = true;
+            pnlPersonalInfo.Visible = true;   
         }
 
         private void btnSıgnIn_Click(object sender, EventArgs e)
@@ -169,9 +185,6 @@ namespace InventoryManagementSystem
                 {
                     conn.Open();
                     SqlTransaction transaction = conn.BeginTransaction();
-
-                    try
-                    {
                         string newsql = "INSERT INTO Users_Table (UserName, Password, Role, Gender) VALUES (@UserName, @Password, 'Customer', @Gender); SELECT SCOPE_IDENTITY();";
                         int newUserId;
                         using (SqlCommand command = new SqlCommand(newsql, conn, transaction))
@@ -191,15 +204,35 @@ namespace InventoryManagementSystem
                             command.Parameters.AddWithValue("@Gender", selectedGender);
                             command.ExecuteNonQuery();
                         }
-
                         transaction.Commit();
                         MessageBox.Show("Successfully processed", "Approved", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                    catch (Exception ex)
+                    using (SqlConnection connection2 = new SqlConnection(connectionString))
                     {
-                        transaction.Rollback();
-                        MessageBox.Show("An error occurred: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        connection2.Open();
+                        string queryGetUserID = "SELECT UserID FROM Users_Table WHERE Username = @Username;";
+                        SqlCommand getUserIDCommand = new SqlCommand(queryGetUserID, connection2);
+                        // getUserIDCommand.Parameters.AddWithValue("@Username", someUsername); // Burada Username için uygun parametreyi ekleyin
+                        int userIDFromUsersTable = 0;
+                        using (SqlDataReader reader = getUserIDCommand.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                userIDFromUsersTable = reader.GetInt32(0);  //BURAYA DİKKAT BURADAN KALDIN
+                            }
+                        }
+                        string queryStatus = "INSERT INTO UserInformations_Table (UserID, Name, ProcessDate, Status, ByWho) VALUES (@UserID, @Name, @ProcessDate, 'Set To Customer', 'Self');";
+                        using (SqlCommand command = new SqlCommand(queryStatus, connection2))
+                        {
+                            command.Parameters.AddWithValue("@UserID", userIDFromUsersTable);
+                            command.Parameters.AddWithValue("@Name", newUsername);
+                            command.Parameters.AddWithValue("@ProcessDate", DateTime.Now);
+
+                            command.ExecuteNonQuery();
+                        }
+
+                        connection2.Close();
                     }
+
                 }
             }
             else
@@ -232,6 +265,33 @@ namespace InventoryManagementSystem
             {
                 string selectedGender = lbGender.SelectedItem.ToString();
                 textBox1.Text = selectedGender;
+            }
+        }
+
+        private void btnSendMail_Click(object sender, EventArgs e)
+        {
+            string senderEmail = "smtpmailsender11@gmail.com";
+            string password = "zzgq xmpz tvie ibhh";
+            string receiverEmail = btnSendMail.Text;
+            string subject = "Reset Password";
+            string body = "Reset";
+            // SMTP sunucusu ve portu
+            string smtpServer = "smtp.gmail.com";
+            int port = 587; 
+            try
+            {
+                using (SmtpClient client = new SmtpClient(smtpServer, port))
+                {
+                    client.EnableSsl = true; 
+                    client.Credentials = new NetworkCredential(senderEmail, password);
+                    MailMessage mail = new MailMessage(senderEmail, receiverEmail, subject, body);
+                    client.Send(mail);
+                    MessageBox.Show("Mail Sent");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("E-posta gönderilirken hata oluştu: " + ex.InnerException);
             }
         }
     }

@@ -10,6 +10,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static InventoryManagementSystem.Form1;
 
 namespace InventoryManagementSystem
 {
@@ -32,12 +33,10 @@ namespace InventoryManagementSystem
                 txtBRole.Text = row.Cells["Role"].Value.ToString();
             }
         }
-
-        
         //Page Openers
         private void btnUM_Click(object sender, EventArgs e)
         {
-
+            pnlR.Visible = false;
             pnlPM.Visible = false;
             pnlOM.Visible = false;
             pnlSC.Visible = false;
@@ -61,6 +60,7 @@ namespace InventoryManagementSystem
         }
         private void btnPM_Click(object sender, EventArgs e)
         {
+            pnlR.Visible = false;
             pnlUM.Visible = false;
             pnlOM.Visible = false;
             pnlSC.Visible = false;
@@ -83,6 +83,7 @@ namespace InventoryManagementSystem
         }
         private void btnSC_Click(object sender, EventArgs e)
         {
+            pnlR.Visible = false;
             pnlUM.Visible = false;
             pnlOM.Visible = false;
             pnlSM.Visible = false;
@@ -106,6 +107,7 @@ namespace InventoryManagementSystem
         }
         private void btnOM_Click(object sender, EventArgs e)
         {
+            pnlR.Visible = false;
             pnlUM.Visible = false;
             pnlSC.Visible = false;
             pnlSM.Visible = false;
@@ -149,6 +151,7 @@ namespace InventoryManagementSystem
         }
         private void btnSM_Click(object sender, EventArgs e)
         {
+            pnlR.Visible = false;
             pnlUM.Visible = false;
             pnlOM.Visible = false;
             pnlSC.Visible = false;
@@ -173,6 +176,7 @@ namespace InventoryManagementSystem
         }
         private void btnCM_Click(object sender, EventArgs e)
         {
+            pnlR.Visible = false;
             pnlUM.Visible = false;
             pnlOM.Visible = false;
             pnlSC.Visible = false;
@@ -192,6 +196,38 @@ namespace InventoryManagementSystem
                 }
             }
             dgvCM.DataSource = dataTable;
+        }
+        private void btnR_Click(object sender, EventArgs e)
+        {
+            pnlUM.Visible = false;
+            pnlOM.Visible = false;
+            pnlSC.Visible = false;
+            pnlSM.Visible = false;
+            pnlPM.Visible = false;
+            pnlCM.Visible = false;
+            pnlR.Visible = true;
+            string query3 = "SELECT * FROM UserInformations_Table";
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                using (SqlCommand command2 = new SqlCommand(query3, connection))
+                {
+                    SqlDataAdapter adapter = new SqlDataAdapter(command2);
+                    DataTable dataTable2 = new DataTable();
+                    adapter.Fill(dataTable2);
+                    dgvUI.DataSource = dataTable2;
+                }
+            }
+            string query = "SELECT * FROM OrderInformations_Table";
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    SqlDataAdapter adapter = new SqlDataAdapter(command);
+                    DataTable dataTable = new DataTable();
+                    adapter.Fill(dataTable);
+                    dgvProductInformation.DataSource = dataTable;
+                }
+            }
         }
         // Product Management Buttons
         private void btnAddProduct_Click(object sender, EventArgs e)
@@ -302,11 +338,9 @@ namespace InventoryManagementSystem
                 }
             }
         }
-        //User Management Buttons
+        //User Management Buttons ///////////////////////////////////
         private void btnChange_Click(object sender, EventArgs e)
         {
-            try
-            {
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {
                     conn.Open();
@@ -327,10 +361,22 @@ namespace InventoryManagementSystem
                         }
                     }
                 }
-            }
-            catch (Exception ex)
+            using (SqlConnection connection2 = new SqlConnection(connectionString))
             {
-                MessageBox.Show("Bir hata oluştu: " + ex.Message);
+                string currentTime = DateTime.Now.ToString();
+                connection2.Open();
+                string queryStatus = "INSERT INTO UserInformations_Table (UserID, Name, ProcessDate, Status, ByWho) VALUES (@UserID, @Name, @ProcessDate, @Status, 'Admin');";
+                string status = listBox1.SelectedItem.ToString();
+                using (SqlCommand command = new SqlCommand(queryStatus, connection2))
+                {
+                    command.Parameters.AddWithValue("@UserID", txtBID.Text);
+                    command.Parameters.AddWithValue("@Name", txtBNS.Text);
+                    command.Parameters.AddWithValue("@ProcessDate", currentTime);
+                    command.Parameters.AddWithValue("@Status", "Change to "+ status);
+
+                    command.ExecuteNonQuery();
+                }
+                connection2.Close();
             }
         }
         private void btnSelect_Click(object sender, EventArgs e)
@@ -482,7 +528,48 @@ namespace InventoryManagementSystem
                     }
                 }
             }
+            using (SqlConnection connection2 = new SqlConnection(connectionString))
+            {
+                string currentTime = DateTime.Now.ToString();
+                connection2.Open();
+                string queryStatus = "INSERT INTO OrderInformations_Table (OrderID, CustomerID, ProcessDate, Status, ByWho) VALUES (@OrderID, @CustomerID, @ProcessDate, @Status, 'Admin');";
+                string status = listBox3.SelectedItem.ToString();
+                using (SqlCommand command = new SqlCommand(queryStatus, connection2))
+                {
+                    command.Parameters.AddWithValue("@OrderID", txtBUOS.Text);
+                    command.Parameters.AddWithValue("@CustomerID", GlobalVariablesCustomer.CustomerId);
+                    command.Parameters.AddWithValue("@ProcessDate", currentTime);
+                    command.Parameters.AddWithValue("@Status","Change to "+ status);
 
+                    command.ExecuteNonQuery();
+                }
+                connection2.Close();
+            }
+
+        }
+
+        private void btnQuit_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            Form1 form = new Form1();
+            form.Show();
+        }
+
+        private void AdministratorMenu_Load(object sender, EventArgs e)
+        {
+            string query2 = "SELECT * FROM Customers_Table";
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                using (SqlCommand command = new SqlCommand(query2, connection))
+                {
+                    SqlDataAdapter adapter = new SqlDataAdapter(command);
+                    DataTable dataTable = new DataTable();
+                    adapter.Fill(dataTable);
+                    dgvProductInformation.DataSource = dataTable;
+                }
+                connection.Close();
+            }
         }
     }
 

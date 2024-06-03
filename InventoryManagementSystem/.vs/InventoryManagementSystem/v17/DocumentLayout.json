@@ -3,28 +3,40 @@
   "WorkspaceRootPath": "C:\\Users\\A\\Desktop\\Bootcamp_Final_Project\\Product-Management-Project\\InventoryManagementSystem\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{E00D2BC7-282A-4F9E-8521-0299F3BFF745}|InventoryManagementSystem\\InventoryManagementSystem.csproj|C:\\Users\\A\\Desktop\\Bootcamp_Final_Project\\Product-Management-Project\\InventoryManagementSystem\\InventoryManagementSystem\\CustomerMenu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E00D2BC7-282A-4F9E-8521-0299F3BFF745}|InventoryManagementSystem\\InventoryManagementSystem.csproj|solutionrelative:InventoryManagementSystem\\CustomerMenu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E00D2BC7-282A-4F9E-8521-0299F3BFF745}|InventoryManagementSystem\\InventoryManagementSystem.csproj|c:\\users\\a\\desktop\\bootcamp_final_project\\product-management-project\\inventorymanagementsystem\\inventorymanagementsystem\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E00D2BC7-282A-4F9E-8521-0299F3BFF745}|InventoryManagementSystem\\InventoryManagementSystem.csproj|solutionrelative:inventorymanagementsystem\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E00D2BC7-282A-4F9E-8521-0299F3BFF745}|InventoryManagementSystem\\InventoryManagementSystem.csproj|C:\\Users\\A\\Desktop\\Bootcamp_Final_Project\\Product-Management-Project\\InventoryManagementSystem\\inventorymanagementsystem\\customermenu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{E00D2BC7-282A-4F9E-8521-0299F3BFF745}|InventoryManagementSystem\\InventoryManagementSystem.csproj|solutionrelative:inventorymanagementsystem\\customermenu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E00D2BC7-282A-4F9E-8521-0299F3BFF745}|InventoryManagementSystem\\InventoryManagementSystem.csproj|c:\\users\\a\\desktop\\bootcamp_final_project\\product-management-project\\inventorymanagementsystem\\inventorymanagementsystem\\teammanagermenu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{E00D2BC7-282A-4F9E-8521-0299F3BFF745}|InventoryManagementSystem\\InventoryManagementSystem.csproj|solutionrelative:inventorymanagementsystem\\teammanagermenu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{E00D2BC7-282A-4F9E-8521-0299F3BFF745}|InventoryManagementSystem\\InventoryManagementSystem.csproj|C:\\Users\\A\\Desktop\\Bootcamp_Final_Project\\Product-Management-Project\\InventoryManagementSystem\\inventorymanagementsystem\\administratormenu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E00D2BC7-282A-4F9E-8521-0299F3BFF745}|InventoryManagementSystem\\InventoryManagementSystem.csproj|solutionrelative:inventorymanagementsystem\\administratormenu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{E00D2BC7-282A-4F9E-8521-0299F3BFF745}|InventoryManagementSystem\\InventoryManagementSystem.csproj|C:\\Users\\A\\Desktop\\Bootcamp_Final_Project\\Product-Management-Project\\InventoryManagementSystem\\inventorymanagementsystem\\administratormenu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{E00D2BC7-282A-4F9E-8521-0299F3BFF745}|InventoryManagementSystem\\InventoryManagementSystem.csproj|solutionrelative:inventorymanagementsystem\\administratormenu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E00D2BC7-282A-4F9E-8521-0299F3BFF745}|InventoryManagementSystem\\InventoryManagementSystem.csproj|C:\\Users\\A\\Desktop\\Bootcamp_Final_Project\\Product-Management-Project\\InventoryManagementSystem\\InventoryManagementSystem\\Program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E00D2BC7-282A-4F9E-8521-0299F3BFF745}|InventoryManagementSystem\\InventoryManagementSystem.csproj|solutionrelative:InventoryManagementSystem\\Program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E00D2BC7-282A-4F9E-8521-0299F3BFF745}|InventoryManagementSystem\\InventoryManagementSystem.csproj|c:\\users\\a\\desktop\\bootcamp_final_project\\product-management-project\\inventorymanagementsystem\\inventorymanagementsystem\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{E00D2BC7-282A-4F9E-8521-0299F3BFF745}|InventoryManagementSystem\\InventoryManagementSystem.csproj|solutionrelative:inventorymanagementsystem\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E00D2BC7-282A-4F9E-8521-0299F3BFF745}|InventoryManagementSystem\\InventoryManagementSystem.csproj|C:\\Users\\A\\Desktop\\Bootcamp_Final_Project\\Product-Management-Project\\InventoryManagementSystem\\InventoryManagementSystem\\TeamManagerMenu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E00D2BC7-282A-4F9E-8521-0299F3BFF745}|InventoryManagementSystem\\InventoryManagementSystem.csproj|solutionrelative:InventoryManagementSystem\\TeamManagerMenu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E00D2BC7-282A-4F9E-8521-0299F3BFF745}|InventoryManagementSystem\\InventoryManagementSystem.csproj|C:\\Users\\A\\Desktop\\Bootcamp_Final_Project\\Product-Management-Project\\InventoryManagementSystem\\inventorymanagementsystem\\customermenu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E00D2BC7-282A-4F9E-8521-0299F3BFF745}|InventoryManagementSystem\\InventoryManagementSystem.csproj|solutionrelative:inventorymanagementsystem\\customermenu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E00D2BC7-282A-4F9E-8521-0299F3BFF745}|InventoryManagementSystem\\InventoryManagementSystem.csproj|C:\\Users\\A\\Desktop\\Bootcamp_Final_Project\\Product-Management-Project\\InventoryManagementSystem\\inventorymanagementsystem\\teammanagermenu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E00D2BC7-282A-4F9E-8521-0299F3BFF745}|InventoryManagementSystem\\InventoryManagementSystem.csproj|solutionrelative:inventorymanagementsystem\\teammanagermenu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E00D2BC7-282A-4F9E-8521-0299F3BFF745}|InventoryManagementSystem\\InventoryManagementSystem.csproj|C:\\Users\\A\\Desktop\\Bootcamp_Final_Project\\Product-Management-Project\\InventoryManagementSystem\\inventorymanagementsystem\\customermenu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{E00D2BC7-282A-4F9E-8521-0299F3BFF745}|InventoryManagementSystem\\InventoryManagementSystem.csproj|solutionrelative:inventorymanagementsystem\\customermenu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E00D2BC7-282A-4F9E-8521-0299F3BFF745}|InventoryManagementSystem\\InventoryManagementSystem.csproj|C:\\Users\\A\\Desktop\\Bootcamp_Final_Project\\Product-Management-Project\\InventoryManagementSystem\\inventorymanagementsystem\\teammanagermenu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{E00D2BC7-282A-4F9E-8521-0299F3BFF745}|InventoryManagementSystem\\InventoryManagementSystem.csproj|solutionrelative:inventorymanagementsystem\\teammanagermenu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E00D2BC7-282A-4F9E-8521-0299F3BFF745}|InventoryManagementSystem\\InventoryManagementSystem.csproj|C:\\Users\\A\\Desktop\\Bootcamp_Final_Project\\Product-Management-Project\\InventoryManagementSystem\\InventoryManagementSystem\\Program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E00D2BC7-282A-4F9E-8521-0299F3BFF745}|InventoryManagementSystem\\InventoryManagementSystem.csproj|solutionrelative:InventoryManagementSystem\\Program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -34,17 +46,17 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 8,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\A\\Desktop\\Bootcamp_Final_Project\\Product-Management-Project\\InventoryManagementSystem\\InventoryManagementSystem\\Program.cs",
               "RelativeDocumentMoniker": "InventoryManagementSystem\\Program.cs",
               "ToolTip": "C:\\Users\\A\\Desktop\\Bootcamp_Final_Project\\Product-Management-Project\\InventoryManagementSystem\\InventoryManagementSystem\\Program.cs",
               "RelativeToolTip": "InventoryManagementSystem\\Program.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABYAAAAAAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABIAAAAlAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-05-28T17:57:16.3Z",
               "IsPinned": true
@@ -56,38 +68,75 @@
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "AdministratorMenu.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\A\\Desktop\\Bootcamp_Final_Project\\Product-Management-Project\\InventoryManagementSystem\\InventoryManagementSystem\\AdministratorMenu.cs",
-              "RelativeDocumentMoniker": "InventoryManagementSystem\\AdministratorMenu.cs",
-              "ToolTip": "C:\\Users\\A\\Desktop\\BootCamp\\InventoryManagementSystem\\InventoryManagementSystem\\AdministratorMenu.cs [Design]",
-              "RelativeToolTip": "..\\..\\..\\BootCamp\\InventoryManagementSystem\\InventoryManagementSystem\\AdministratorMenu.cs [Design]",
+              "Title": "Form1.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\A\\Desktop\\Bootcamp_Final_Project\\Product-Management-Project\\InventoryManagementSystem\\InventoryManagementSystem\\Form1.cs",
+              "RelativeDocumentMoniker": "InventoryManagementSystem\\Form1.cs",
+              "ToolTip": "C:\\Users\\A\\Desktop\\Bootcamp_Final_Project\\Product-Management-Project\\InventoryManagementSystem\\InventoryManagementSystem\\Form1.cs [Design]",
+              "RelativeToolTip": "InventoryManagementSystem\\Form1.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-28T18:10:20.817Z"
+              "WhenOpened": "2024-06-02T20:16:29.11Z",
+              "EditorCaption": " [Design]"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
+              "Title": "AdministratorMenu.cs",
+              "DocumentMoniker": "C:\\Users\\A\\Desktop\\Bootcamp_Final_Project\\Product-Management-Project\\InventoryManagementSystem\\InventoryManagementSystem\\AdministratorMenu.cs",
+              "RelativeDocumentMoniker": "InventoryManagementSystem\\AdministratorMenu.cs",
+              "ToolTip": "C:\\Users\\A\\Desktop\\Bootcamp_Final_Project\\Product-Management-Project\\InventoryManagementSystem\\InventoryManagementSystem\\AdministratorMenu.cs",
+              "RelativeToolTip": "InventoryManagementSystem\\AdministratorMenu.cs",
+              "ViewState": "AQIAAFEBAAAAAAAAAAAUwHQBAABIAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-01T17:29:01.632Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "AdministratorMenu.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\A\\Desktop\\Bootcamp_Final_Project\\Product-Management-Project\\InventoryManagementSystem\\InventoryManagementSystem\\AdministratorMenu.cs",
+              "RelativeDocumentMoniker": "InventoryManagementSystem\\AdministratorMenu.cs",
+              "ToolTip": "C:\\Users\\A\\Desktop\\Bootcamp_Final_Project\\Product-Management-Project\\InventoryManagementSystem\\InventoryManagementSystem\\AdministratorMenu.cs [Design]",
+              "RelativeToolTip": "InventoryManagementSystem\\AdministratorMenu.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-01T17:29:00.078Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "CustomerMenu.cs",
               "DocumentMoniker": "C:\\Users\\A\\Desktop\\Bootcamp_Final_Project\\Product-Management-Project\\InventoryManagementSystem\\InventoryManagementSystem\\CustomerMenu.cs",
               "RelativeDocumentMoniker": "InventoryManagementSystem\\CustomerMenu.cs",
               "ToolTip": "C:\\Users\\A\\Desktop\\Bootcamp_Final_Project\\Product-Management-Project\\InventoryManagementSystem\\InventoryManagementSystem\\CustomerMenu.cs",
               "RelativeToolTip": "InventoryManagementSystem\\CustomerMenu.cs",
-              "ViewState": "AQIAAAcAAAAAAAAAAAAYwBsAAAASAAAA",
+              "ViewState": "AQIAACwAAAAAAAAAAAAawE0AAAAPAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-28T18:04:08.517Z",
+              "WhenOpened": "2024-06-01T16:31:53.658Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Form1.cs",
+              "DocumentMoniker": "C:\\Users\\A\\Desktop\\Bootcamp_Final_Project\\Product-Management-Project\\InventoryManagementSystem\\InventoryManagementSystem\\Form1.cs",
+              "RelativeDocumentMoniker": "InventoryManagementSystem\\Form1.cs",
+              "ToolTip": "C:\\Users\\A\\Desktop\\Bootcamp_Final_Project\\Product-Management-Project\\InventoryManagementSystem\\InventoryManagementSystem\\Form1.cs",
+              "RelativeToolTip": "InventoryManagementSystem\\Form1.cs",
+              "ViewState": "AQIAAMkAAAAAAAAAAADwv9sAAABqAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-01T13:06:35.697Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 6,
               "Title": "CustomerMenu.cs [Design]",
               "DocumentMoniker": "C:\\Users\\A\\Desktop\\Bootcamp_Final_Project\\Product-Management-Project\\InventoryManagementSystem\\InventoryManagementSystem\\CustomerMenu.cs",
               "RelativeDocumentMoniker": "InventoryManagementSystem\\CustomerMenu.cs",
               "ToolTip": "C:\\Users\\A\\Desktop\\Bootcamp_Final_Project\\Product-Management-Project\\InventoryManagementSystem\\InventoryManagementSystem\\CustomerMenu.cs [Design]",
               "RelativeToolTip": "InventoryManagementSystem\\CustomerMenu.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-28T18:04:05.515Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2024-06-01T16:31:50.09Z"
             },
             {
               "$type": "Document",
@@ -97,22 +146,20 @@
               "RelativeDocumentMoniker": "InventoryManagementSystem\\TeamManagerMenu.cs",
               "ToolTip": "C:\\Users\\A\\Desktop\\Bootcamp_Final_Project\\Product-Management-Project\\InventoryManagementSystem\\InventoryManagementSystem\\TeamManagerMenu.cs",
               "RelativeToolTip": "InventoryManagementSystem\\TeamManagerMenu.cs",
-              "ViewState": "AQIAACQAAAAAAAAAAAA1wDgAAAAkAAAA",
+              "ViewState": "AQIAABsAAAAAAAAAAAAEwCoAAAAPAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-28T12:30:47.248Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-06-01T15:55:32.675Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 7,
               "Title": "TeamManagerMenu.cs [Design]",
               "DocumentMoniker": "C:\\Users\\A\\Desktop\\Bootcamp_Final_Project\\Product-Management-Project\\InventoryManagementSystem\\InventoryManagementSystem\\TeamManagerMenu.cs",
               "RelativeDocumentMoniker": "InventoryManagementSystem\\TeamManagerMenu.cs",
               "ToolTip": "C:\\Users\\A\\Desktop\\Bootcamp_Final_Project\\Product-Management-Project\\InventoryManagementSystem\\InventoryManagementSystem\\TeamManagerMenu.cs [Design]",
               "RelativeToolTip": "InventoryManagementSystem\\TeamManagerMenu.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-28T12:30:43.857Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2024-06-01T15:55:30.226Z"
             }
           ]
         }

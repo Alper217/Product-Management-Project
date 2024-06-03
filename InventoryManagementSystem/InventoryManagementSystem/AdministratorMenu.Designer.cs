@@ -107,10 +107,17 @@
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.pnlR = new System.Windows.Forms.Panel();
+            this.dgvUI = new System.Windows.Forms.DataGridView();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
             this.chart3 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.btnDate = new System.Windows.Forms.Button();
             this.chart2 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.label14 = new System.Windows.Forms.Label();
+            this.txtBDates = new System.Windows.Forms.TextBox();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgvProductInformation = new System.Windows.Forms.DataGridView();
+            this.btnQuit = new System.Windows.Forms.Button();
             this.pnlUM.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUM)).BeginInit();
             this.pnlPM.SuspendLayout();
@@ -124,10 +131,11 @@
             this.pnlCM.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCM)).BeginInit();
             this.pnlR.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvUI)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvProductInformation)).BeginInit();
             this.SuspendLayout();
             // 
             // btnPM
@@ -198,6 +206,7 @@
             this.btnR.TabIndex = 6;
             this.btnR.Text = "Reporting";
             this.btnR.UseVisualStyleBackColor = true;
+            this.btnR.Click += new System.EventHandler(this.btnR_Click);
             // 
             // pnlUM
             // 
@@ -211,7 +220,7 @@
             this.pnlUM.Controls.Add(this.txtBNS);
             this.pnlUM.Controls.Add(this.lblNS);
             this.pnlUM.Controls.Add(this.dgvUM);
-            this.pnlUM.Location = new System.Drawing.Point(186, 31);
+            this.pnlUM.Location = new System.Drawing.Point(1290, 101);
             this.pnlUM.Name = "pnlUM";
             this.pnlUM.Size = new System.Drawing.Size(605, 429);
             this.pnlUM.TabIndex = 7;
@@ -338,7 +347,7 @@
             this.pnlPM.Controls.Add(this.txtBPN);
             this.pnlPM.Controls.Add(this.lblAddPN);
             this.pnlPM.Controls.Add(this.dgvPM);
-            this.pnlPM.Location = new System.Drawing.Point(186, 31);
+            this.pnlPM.Location = new System.Drawing.Point(1290, 101);
             this.pnlPM.Name = "pnlPM";
             this.pnlPM.Size = new System.Drawing.Size(605, 429);
             this.pnlPM.TabIndex = 10;
@@ -487,7 +496,7 @@
             this.pnlOM.Controls.Add(this.txtBUOS);
             this.pnlOM.Controls.Add(this.listBox3);
             this.pnlOM.Controls.Add(this.btnStatusChange);
-            this.pnlOM.Location = new System.Drawing.Point(183, 31);
+            this.pnlOM.Location = new System.Drawing.Point(1287, 101);
             this.pnlOM.Name = "pnlOM";
             this.pnlOM.Size = new System.Drawing.Size(605, 429);
             this.pnlOM.TabIndex = 11;
@@ -549,7 +558,7 @@
             this.pnlSC.Controls.Add(this.lblStockControl);
             this.pnlSC.Controls.Add(this.btnControlStock);
             this.pnlSC.Controls.Add(this.dgvSC);
-            this.pnlSC.Location = new System.Drawing.Point(186, 31);
+            this.pnlSC.Location = new System.Drawing.Point(1290, 101);
             this.pnlSC.Name = "pnlSC";
             this.pnlSC.Size = new System.Drawing.Size(605, 429);
             this.pnlSC.TabIndex = 12;
@@ -597,7 +606,7 @@
             this.pnlSM.Controls.Add(this.lblUpdProductSupplier);
             this.pnlSM.Controls.Add(this.txtBUPS);
             this.pnlSM.Controls.Add(this.dgvSM);
-            this.pnlSM.Location = new System.Drawing.Point(186, 31);
+            this.pnlSM.Location = new System.Drawing.Point(1290, 101);
             this.pnlSM.Name = "pnlSM";
             this.pnlSM.Size = new System.Drawing.Size(605, 429);
             this.pnlSM.TabIndex = 13;
@@ -714,7 +723,7 @@
             this.pnlCM.Controls.Add(this.btnSearchCN);
             this.pnlCM.Controls.Add(this.txtBCNS);
             this.pnlCM.Controls.Add(this.dgvCM);
-            this.pnlCM.Location = new System.Drawing.Point(186, 31);
+            this.pnlCM.Location = new System.Drawing.Point(1290, 101);
             this.pnlCM.Name = "pnlCM";
             this.pnlCM.Size = new System.Drawing.Size(605, 429);
             this.pnlCM.TabIndex = 11;
@@ -818,14 +827,51 @@
             // 
             // pnlR
             // 
+            this.pnlR.Controls.Add(this.dgvUI);
+            this.pnlR.Controls.Add(this.label16);
+            this.pnlR.Controls.Add(this.label15);
             this.pnlR.Controls.Add(this.chart3);
+            this.pnlR.Controls.Add(this.btnDate);
             this.pnlR.Controls.Add(this.chart2);
+            this.pnlR.Controls.Add(this.label14);
+            this.pnlR.Controls.Add(this.txtBDates);
             this.pnlR.Controls.Add(this.chart1);
-            this.pnlR.Controls.Add(this.dataGridView1);
-            this.pnlR.Location = new System.Drawing.Point(816, 31);
+            this.pnlR.Controls.Add(this.dgvProductInformation);
+            this.pnlR.Location = new System.Drawing.Point(186, 12);
             this.pnlR.Name = "pnlR";
-            this.pnlR.Size = new System.Drawing.Size(813, 429);
+            this.pnlR.Size = new System.Drawing.Size(1075, 656);
             this.pnlR.TabIndex = 20;
+            this.pnlR.Visible = false;
+            // 
+            // dgvUI
+            // 
+            this.dgvUI.AllowUserToAddRows = false;
+            this.dgvUI.AllowUserToDeleteRows = false;
+            this.dgvUI.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvUI.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvUI.Location = new System.Drawing.Point(546, 296);
+            this.dgvUI.Name = "dgvUI";
+            this.dgvUI.ReadOnly = true;
+            this.dgvUI.Size = new System.Drawing.Size(517, 348);
+            this.dgvUI.TabIndex = 8;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(793, 276);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(34, 13);
+            this.label16.TabIndex = 7;
+            this.label16.Text = "Users";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(250, 276);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(49, 13);
+            this.label15.TabIndex = 6;
+            this.label15.Text = "Products";
             // 
             // chart3
             // 
@@ -833,17 +879,26 @@
             this.chart3.ChartAreas.Add(chartArea1);
             legend1.Name = "Legend1";
             this.chart3.Legends.Add(legend1);
-            this.chart3.Location = new System.Drawing.Point(285, 32);
+            this.chart3.Location = new System.Drawing.Point(740, 19);
             this.chart3.Name = "chart3";
-            this.chart3.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Berry;
+            this.chart3.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Fire;
             series1.ChartArea = "ChartArea1";
             series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
             series1.Legend = "Legend1";
-            series1.Name = "Series1";
+            series1.Name = "Series4";
             this.chart3.Series.Add(series1);
-            this.chart3.Size = new System.Drawing.Size(238, 142);
-            this.chart3.TabIndex = 2;
-            this.chart3.Text = "chart2";
+            this.chart3.Size = new System.Drawing.Size(311, 199);
+            this.chart3.TabIndex = 3;
+            this.chart3.Text = "chart3";
+            // 
+            // btnDate
+            // 
+            this.btnDate.Location = new System.Drawing.Point(567, 249);
+            this.btnDate.Name = "btnDate";
+            this.btnDate.Size = new System.Drawing.Size(75, 26);
+            this.btnDate.TabIndex = 3;
+            this.btnDate.Text = "button1";
+            this.btnDate.UseVisualStyleBackColor = true;
             // 
             // chart2
             // 
@@ -851,17 +906,34 @@
             this.chart2.ChartAreas.Add(chartArea2);
             legend2.Name = "Legend1";
             this.chart2.Legends.Add(legend2);
-            this.chart2.Location = new System.Drawing.Point(563, 32);
+            this.chart2.Location = new System.Drawing.Point(373, 19);
             this.chart2.Name = "chart2";
-            this.chart2.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Fire;
+            this.chart2.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Berry;
             series2.ChartArea = "ChartArea1";
             series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
             series2.Legend = "Legend1";
-            series2.Name = "Series1";
+            series2.Name = "Series4";
             this.chart2.Series.Add(series2);
-            this.chart2.Size = new System.Drawing.Size(238, 142);
+            this.chart2.Size = new System.Drawing.Size(311, 199);
             this.chart2.TabIndex = 2;
             this.chart2.Text = "chart2";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(403, 233);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(67, 13);
+            this.label14.TabIndex = 5;
+            this.label14.Text = "Search Date";
+            // 
+            // txtBDates
+            // 
+            this.txtBDates.Location = new System.Drawing.Point(406, 249);
+            this.txtBDates.Multiline = true;
+            this.txtBDates.Name = "txtBDates";
+            this.txtBDates.Size = new System.Drawing.Size(140, 26);
+            this.txtBDates.TabIndex = 4;
             // 
             // chart1
             // 
@@ -869,7 +941,7 @@
             this.chart1.ChartAreas.Add(chartArea3);
             legend3.Name = "Legend1";
             this.chart1.Legends.Add(legend3);
-            this.chart1.Location = new System.Drawing.Point(15, 32);
+            this.chart1.Location = new System.Drawing.Point(12, 19);
             this.chart1.Name = "chart1";
             this.chart1.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Pastel;
             series3.ChartArea = "ChartArea1";
@@ -877,25 +949,38 @@
             series3.Legend = "Legend1";
             series3.Name = "Series4";
             this.chart1.Series.Add(series3);
-            this.chart1.Size = new System.Drawing.Size(238, 142);
+            this.chart1.Size = new System.Drawing.Size(311, 199);
             this.chart1.TabIndex = 1;
             this.chart1.Text = "chart1";
             // 
-            // dataGridView1
+            // dgvProductInformation
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 191);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(813, 235);
-            this.dataGridView1.TabIndex = 0;
+            this.dgvProductInformation.AllowUserToAddRows = false;
+            this.dgvProductInformation.AllowUserToDeleteRows = false;
+            this.dgvProductInformation.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvProductInformation.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvProductInformation.Location = new System.Drawing.Point(12, 296);
+            this.dgvProductInformation.Name = "dgvProductInformation";
+            this.dgvProductInformation.ReadOnly = true;
+            this.dgvProductInformation.Size = new System.Drawing.Size(517, 348);
+            this.dgvProductInformation.TabIndex = 0;
+            // 
+            // btnQuit
+            // 
+            this.btnQuit.Location = new System.Drawing.Point(22, 446);
+            this.btnQuit.Name = "btnQuit";
+            this.btnQuit.Size = new System.Drawing.Size(135, 26);
+            this.btnQuit.TabIndex = 21;
+            this.btnQuit.Text = "Quit";
+            this.btnQuit.UseVisualStyleBackColor = true;
+            this.btnQuit.Click += new System.EventHandler(this.btnQuit_Click);
             // 
             // AdministratorMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1690, 929);
+            this.Controls.Add(this.btnQuit);
             this.Controls.Add(this.pnlR);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.label12);
@@ -919,6 +1004,7 @@
             this.Controls.Add(this.btnPM);
             this.Name = "AdministratorMenu";
             this.Text = "AdministratorMenu";
+            this.Load += new System.EventHandler(this.AdministratorMenu_Load);
             this.pnlUM.ResumeLayout(false);
             this.pnlUM.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUM)).EndInit();
@@ -938,10 +1024,12 @@
             this.pnlCM.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCM)).EndInit();
             this.pnlR.ResumeLayout(false);
+            this.pnlR.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvUI)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvProductInformation)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1017,11 +1105,18 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Panel pnlR;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgvProductInformation;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chart3;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chart2;
         private System.Windows.Forms.TextBox txtBDealer;
         private System.Windows.Forms.Label lblDealer;
+        private System.Windows.Forms.Button btnQuit;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.TextBox txtBDates;
+        private System.Windows.Forms.Button btnDate;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chart3;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chart2;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.DataGridView dgvUI;
     }
 }

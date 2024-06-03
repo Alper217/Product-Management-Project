@@ -11,3 +11,16 @@ C:\Users\A\Desktop\BootCamp\InventoryManagementSystem\InventoryManagementSystem\
 C:\Users\A\Desktop\BootCamp\InventoryManagementSystem\InventoryManagementSystem\obj\Debug\InventoryManagementSystem.AdministratorMenu.resources
 C:\Users\A\Desktop\BootCamp\InventoryManagementSystem\InventoryManagementSystem\obj\Debug\InventoryManagementSystem.Form1.resources
 C:\Users\A\Desktop\BootCamp\InventoryManagementSystem\InventoryManagementSystem\obj\Debug\InventoryManagementSystem.TeamManagerMenu.resources
+C:\Users\A\Desktop\Bootcamp_Final_Project\Product-Management-Project\InventoryManagementSystem\InventoryManagementSystem\obj\Debug\InventoryManagementSystem.csproj.AssemblyReference.cache
+C:\Users\A\Desktop\Bootcamp_Final_Project\Product-Management-Project\InventoryManagementSystem\InventoryManagementSystem\obj\Debug\InventoryManagementSystem.AdministratorMenu.resources
+C:\Users\A\Desktop\Bootcamp_Final_Project\Product-Management-Project\InventoryManagementSystem\InventoryManagementSystem\obj\Debug\InventoryManagementSystem.CustomerMenu.resources
+C:\Users\A\Desktop\Bootcamp_Final_Project\Product-Management-Project\InventoryManagementSystem\InventoryManagementSystem\obj\Debug\InventoryManagementSystem.Form1.resources
+C:\Users\A\Desktop\Bootcamp_Final_Project\Product-Management-Project\InventoryManagementSystem\InventoryManagementSystem\obj\Debug\InventoryManagementSystem.Properties.Resources.resources
+C:\Users\A\Desktop\Bootcamp_Final_Project\Product-Management-Project\InventoryManagementSystem\InventoryManagementSystem\obj\Debug\InventoryManagementSystem.TeamManagerMenu.resources
+C:\Users\A\Desktop\Bootcamp_Final_Project\Product-Management-Project\InventoryManagementSystem\InventoryManagementSystem\obj\Debug\InventoryManagementSystem.csproj.GenerateResource.cache
+C:\Users\A\Desktop\Bootcamp_Final_Project\Product-Management-Project\InventoryManagementSystem\InventoryManagementSystem\obj\Debug\InventoryManagementSystem.csproj.CoreCompileInputs.cache
+C:\Users\A\Desktop\Bootcamp_Final_Project\Product-Management-Project\InventoryManagementSystem\InventoryManagementSystem\obj\Debug\InventoryManagementSystem.exe
+C:\Users\A\Desktop\Bootcamp_Final_Project\Product-Management-Project\InventoryManagementSystem\InventoryManagementSystem\obj\Debug\InventoryManagementSystem.pdb
+C:\Users\A\Desktop\Bootcamp_Final_Project\Product-Management-Project\InventoryManagementSystem\InventoryManagementSystem\bin\Debug\InventoryManagementSystem.exe.config
+C:\Users\A\Desktop\Bootcamp_Final_Project\Product-Management-Project\InventoryManagementSystem\InventoryManagementSystem\bin\Debug\InventoryManagementSystem.exe
+C:\Users\A\Desktop\Bootcamp_Final_Project\Product-Management-Project\InventoryManagementSystem\InventoryManagementSystem\bin\Debug\InventoryManagementSystem.pdb

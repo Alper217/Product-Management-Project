@@ -69,13 +69,14 @@
             this.label5 = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.button2 = new System.Windows.Forms.Button();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.btnExit = new System.Windows.Forms.Button();
             this.btnUserSettings = new System.Windows.Forms.Button();
             this.btnMyOrders = new System.Windows.Forms.Button();
             this.btnMySCart = new System.Windows.Forms.Button();
             this.btnSearchProducts = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.txtBSelected = new System.Windows.Forms.TextBox();
             this.pnlProducts.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSeeProducts)).BeginInit();
             this.pnlMyShoppingCart.SuspendLayout();
@@ -84,8 +85,8 @@
             this.pnlMO.SuspendLayout();
             this.pnlUS.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlProducts
@@ -206,10 +207,13 @@
             // 
             // dgvSeeProducts
             // 
+            this.dgvSeeProducts.AllowUserToAddRows = false;
+            this.dgvSeeProducts.AllowUserToDeleteRows = false;
             this.dgvSeeProducts.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvSeeProducts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvSeeProducts.Location = new System.Drawing.Point(188, 0);
             this.dgvSeeProducts.Name = "dgvSeeProducts";
+            this.dgvSeeProducts.ReadOnly = true;
             this.dgvSeeProducts.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvSeeProducts.Size = new System.Drawing.Size(494, 536);
             this.dgvSeeProducts.TabIndex = 0;
@@ -229,11 +233,12 @@
             // 
             // pnlMyShoppingCart
             // 
+            this.pnlMyShoppingCart.Controls.Add(this.txtBSelected);
             this.pnlMyShoppingCart.Controls.Add(this.btnBuy);
             this.pnlMyShoppingCart.Controls.Add(this.lblTotalAmount);
             this.pnlMyShoppingCart.Controls.Add(this.btnBackTwo);
             this.pnlMyShoppingCart.Controls.Add(this.dgvMHC);
-            this.pnlMyShoppingCart.Location = new System.Drawing.Point(265, -1);
+            this.pnlMyShoppingCart.Location = new System.Drawing.Point(262, -1);
             this.pnlMyShoppingCart.Name = "pnlMyShoppingCart";
             this.pnlMyShoppingCart.Size = new System.Drawing.Size(685, 545);
             this.pnlMyShoppingCart.TabIndex = 11;
@@ -241,9 +246,9 @@
             // 
             // btnBuy
             // 
-            this.btnBuy.Location = new System.Drawing.Point(14, 448);
+            this.btnBuy.Location = new System.Drawing.Point(14, 491);
             this.btnBuy.Name = "btnBuy";
-            this.btnBuy.Size = new System.Drawing.Size(135, 37);
+            this.btnBuy.Size = new System.Drawing.Size(238, 37);
             this.btnBuy.TabIndex = 13;
             this.btnBuy.Text = "Buy";
             this.btnBuy.UseVisualStyleBackColor = true;
@@ -252,7 +257,7 @@
             // lblTotalAmount
             // 
             this.lblTotalAmount.AutoSize = true;
-            this.lblTotalAmount.Location = new System.Drawing.Point(11, 432);
+            this.lblTotalAmount.Location = new System.Drawing.Point(75, 468);
             this.lblTotalAmount.Name = "lblTotalAmount";
             this.lblTotalAmount.Size = new System.Drawing.Size(52, 13);
             this.lblTotalAmount.TabIndex = 12;
@@ -270,20 +275,27 @@
             // 
             // dgvMHC
             // 
+            this.dgvMHC.AllowUserToAddRows = false;
+            this.dgvMHC.AllowUserToDeleteRows = false;
             this.dgvMHC.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvMHC.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvMHC.Location = new System.Drawing.Point(0, 64);
             this.dgvMHC.Name = "dgvMHC";
+            this.dgvMHC.ReadOnly = true;
             this.dgvMHC.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvMHC.Size = new System.Drawing.Size(685, 365);
             this.dgvMHC.TabIndex = 0;
+            this.dgvMHC.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMHC_CellClick_1);
             // 
             // dgvMO
             // 
+            this.dgvMO.AllowUserToAddRows = false;
+            this.dgvMO.AllowUserToDeleteRows = false;
             this.dgvMO.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvMO.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvMO.Location = new System.Drawing.Point(0, 32);
             this.dgvMO.Name = "dgvMO";
+            this.dgvMO.ReadOnly = true;
             this.dgvMO.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvMO.Size = new System.Drawing.Size(685, 442);
             this.dgvMO.TabIndex = 0;
@@ -305,7 +317,7 @@
             this.pnlMO.Controls.Add(this.btnCancel);
             this.pnlMO.Controls.Add(this.btnBack2);
             this.pnlMO.Controls.Add(this.dgvMO);
-            this.pnlMO.Location = new System.Drawing.Point(265, -1);
+            this.pnlMO.Location = new System.Drawing.Point(262, -1);
             this.pnlMO.Name = "pnlMO";
             this.pnlMO.Size = new System.Drawing.Size(685, 548);
             this.pnlMO.TabIndex = 14;
@@ -349,9 +361,9 @@
             this.pnlUS.Controls.Add(this.pictureBox2);
             this.pnlUS.Controls.Add(this.button2);
             this.pnlUS.Controls.Add(this.pictureBox3);
-            this.pnlUS.Location = new System.Drawing.Point(265, -1);
+            this.pnlUS.Location = new System.Drawing.Point(262, -1);
             this.pnlUS.Name = "pnlUS";
-            this.pnlUS.Size = new System.Drawing.Size(685, 539);
+            this.pnlUS.Size = new System.Drawing.Size(688, 548);
             this.pnlUS.TabIndex = 15;
             this.pnlUS.Visible = false;
             // 
@@ -486,6 +498,16 @@
             this.button2.Text = "Back";
             this.button2.UseVisualStyleBackColor = true;
             // 
+            // pictureBox3
+            // 
+            this.pictureBox3.BackColor = System.Drawing.Color.Black;
+            this.pictureBox3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox3.Location = new System.Drawing.Point(16, 3);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(220, 224);
+            this.pictureBox3.TabIndex = 23;
+            this.pictureBox3.TabStop = false;
+            // 
             // btnExit
             // 
             this.btnExit.BackColor = System.Drawing.Color.IndianRed;
@@ -567,19 +589,17 @@
             this.pictureBox1.BackColor = System.Drawing.Color.IndianRed;
             this.pictureBox1.Location = new System.Drawing.Point(-5, -1);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(275, 548);
+            this.pictureBox1.Size = new System.Drawing.Size(267, 548);
             this.pictureBox1.TabIndex = 17;
             this.pictureBox1.TabStop = false;
             // 
-            // pictureBox3
+            // txtBSelected
             // 
-            this.pictureBox3.BackColor = System.Drawing.Color.Black;
-            this.pictureBox3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox3.Location = new System.Drawing.Point(16, 3);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(220, 224);
-            this.pictureBox3.TabIndex = 23;
-            this.pictureBox3.TabStop = false;
+            this.txtBSelected.Location = new System.Drawing.Point(14, 465);
+            this.txtBSelected.Name = "txtBSelected";
+            this.txtBSelected.ReadOnly = true;
+            this.txtBSelected.Size = new System.Drawing.Size(55, 20);
+            this.txtBSelected.TabIndex = 15;
             // 
             // CustomerMenu
             // 
@@ -587,11 +607,11 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Menu;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(948, 536);
+            this.ClientSize = new System.Drawing.Size(946, 540);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.pnlUS);
-            this.Controls.Add(this.pnlMO);
             this.Controls.Add(this.pnlMyShoppingCart);
+            this.Controls.Add(this.pnlMO);
             this.Controls.Add(this.lblWelcome);
             this.Controls.Add(this.pnlProducts);
             this.Controls.Add(this.btnUserSettings);
@@ -615,8 +635,8 @@
             this.pnlUS.ResumeLayout(false);
             this.pnlUS.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -671,5 +691,6 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.TextBox txtBSelected;
     }
 }
