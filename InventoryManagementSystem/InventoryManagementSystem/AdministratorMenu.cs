@@ -228,6 +228,10 @@ namespace InventoryManagementSystem
                     dgvProductInformation.DataSource = dataTable;
                 }
             }
+
+            chart1.Titles.Add("Daily Order Recap");
+            chart2.Titles.Add("Order Based Profit Rate");
+            chart3.Titles.Add("Loss Rate \n(Cancelled Products)");
         }
         // Product Management Buttons
         private void btnAddProduct_Click(object sender, EventArgs e)

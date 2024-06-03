@@ -211,7 +211,7 @@ namespace InventoryManagementSystem
                         connection2.Open();
                         string queryGetUserID = "SELECT UserID FROM Users_Table WHERE Username = @Username;";
                         SqlCommand getUserIDCommand = new SqlCommand(queryGetUserID, connection2);
-                        // getUserIDCommand.Parameters.AddWithValue("@Username", someUsername); // Burada Username için uygun parametreyi ekleyin
+                        getUserIDCommand.Parameters.AddWithValue("@Username", newUsername); 
                         int userIDFromUsersTable = 0;
                         using (SqlDataReader reader = getUserIDCommand.ExecuteReader())
                         {
