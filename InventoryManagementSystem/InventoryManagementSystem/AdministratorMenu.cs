@@ -10,11 +10,12 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 using static InventoryManagementSystem.Form1;
 
 namespace InventoryManagementSystem
 {
-   
+    
     public partial class AdministratorMenu : Form
     {
         string connectionString = $"Server=Alper;Database=InventoryManagementSystem;User Id=sa;Password=1;";
@@ -228,10 +229,106 @@ namespace InventoryManagementSystem
                     dgvProductInformation.DataSource = dataTable;
                 }
             }
+            //Chart1 deneme
+            string queryForChart1 = "SELECT ProductID, Piece FROM OrderDetails_Table";
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand command = new SqlCommand(queryForChart1, connection);
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
 
-            chart1.Titles.Add("Daily Order Recap");
-            chart2.Titles.Add("Order Based Profit Rate");
-            chart3.Titles.Add("Loss Rate \n(Cancelled Products)");
+                // Chart ayarları deneme
+                chart1.Series.Clear();
+                Series series = new Series("Product Pieces");
+                series.ChartType = SeriesChartType.Pie;
+                Dictionary<int, int> productPieces = new Dictionary<int, int>();
+                while (reader.Read())
+                {
+                    int productID = reader.GetInt32(0);
+                    int piece = reader.GetInt32(1);
+                    if (productPieces.ContainsKey(productID))
+                    {
+                        productPieces[productID] += piece;
+                    }
+                    else
+                    {
+                        productPieces.Add(productID, piece);
+                    }
+                }
+                foreach (var kvp in productPieces)
+                {
+                    string pointLabel = $"{kvp.Key} : {kvp.Value}";
+                    DataPoint dataPoint = new DataPoint();
+                    dataPoint.SetValueXY(kvp.Key.ToString(), kvp.Value);
+                    dataPoint.Label = pointLabel;
+                    series.Points.Add(dataPoint);
+                }
+                chart1.Series.Add(series);
+                reader.Close();
+            }
+            //Chart 3
+            string queryForL3 = "SELECT CustomerID, ProductID, TotalAmount FROM CanceledOrders_Table";
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand command = new SqlCommand(queryForL3, connection);
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                List<string> customerIDs = new List<string>();
+                List<string> productIDs = new List<string>();
+                List<decimal> totalAmounts = new List<decimal>();
+                while (reader.Read())
+                {
+                    customerIDs.Add(reader["CustomerID"].ToString());
+                    productIDs.Add(reader["ProductID"].ToString());
+                    totalAmounts.Add(Convert.ToDecimal(reader["TotalAmount"]));
+                }
+                Series series = new Series();
+                series.ChartType = SeriesChartType.Pie;
+                var groupedCustomerIDs = customerIDs.GroupBy(id => id).Select(group => new { CustomerID = group.Key, Count = group.Count() });
+                var groupedProductIDs = productIDs.GroupBy(id => id).Select(group => new { ProductID = group.Key, Count = group.Count() });
+                foreach (var item in groupedProductIDs)
+                {
+                    series.Points.AddXY("ProductID: " + item.ProductID, item.Count);
+                }
+                chart3.Series.Clear();
+                chart3.Series.Add(series);
+                decimal totalAmountSum = totalAmounts.Sum();
+                lblTotalPrice.Text = "Total Loss: " + totalAmountSum.ToString("N0") +"$";
+            }
+            //Chart 2
+            string queryForM2 = "SELECT SUM(Orders_Table.TotalAmount) AS TotalAmount, OrderDetails_Table.ProductID " +
+                     "FROM Orders_Table " +
+                     "LEFT JOIN OrderDetails_Table ON Orders_Table.OrderID = OrderDetails_Table.OrderID " +
+                     "GROUP BY OrderDetails_Table.ProductID";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand command = new SqlCommand(queryForM2, connection);
+                connection.Open();
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    if (chart2.Series.IndexOf("Total Amount") == -1)
+                    {
+                        Series series = new Series();
+                        series.ChartType = SeriesChartType.Bar;
+                        series.Name = "Total Amount";
+                        chart2.Series.Add(series);
+                    }
+
+                    Series totalAmountSeries = chart2.Series["Total Amount"];
+                    totalAmountSeries.Points.Clear(); // Önceki verileri temizle
+                    decimal totalAmount = 0;
+                    while (reader.Read())
+                    {
+                        totalAmountSeries.Points.AddXY(reader["ProductID"].ToString(), reader["TotalAmount"]);
+                        totalAmount += Convert.ToDecimal(reader["TotalAmount"]);
+                    }
+
+                    lblTotalAmount.Text = $"Total Amount : {totalAmount.ToString("N0")}$";
+                }
+                connection.Close();
+            }
+
         }
         // Product Management Buttons
         private void btnAddProduct_Click(object sender, EventArgs e)
@@ -574,6 +671,9 @@ namespace InventoryManagementSystem
                 }
                 connection.Close();
             }
+            chart1.Titles.Add("Daily Order Recap");
+            chart2.Titles.Add("Order Based Profit Rate");
+            chart3.Titles.Add("Loss Rate \n(Cancelled Products)");
         }
     }
 

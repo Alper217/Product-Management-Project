@@ -421,7 +421,7 @@
             this.pnlLogIn.Controls.Add(this.lblPasswordLogIn);
             this.pnlLogIn.Controls.Add(this.lblUserName);
             this.pnlLogIn.Controls.Add(this.chkboxShowPassword1);
-            this.pnlLogIn.Location = new System.Drawing.Point(316, 102);
+            this.pnlLogIn.Location = new System.Drawing.Point(508, 223);
             this.pnlLogIn.Name = "pnlLogIn";
             this.pnlLogIn.Size = new System.Drawing.Size(267, 195);
             this.pnlLogIn.TabIndex = 5;
@@ -461,7 +461,7 @@
             this.pnlEmail.Controls.Add(this.label3);
             this.pnlEmail.Controls.Add(this.label2);
             this.pnlEmail.Controls.Add(this.textBox2);
-            this.pnlEmail.Location = new System.Drawing.Point(175, 71);
+            this.pnlEmail.Location = new System.Drawing.Point(673, 553);
             this.pnlEmail.Name = "pnlEmail";
             this.pnlEmail.Size = new System.Drawing.Size(575, 422);
             this.pnlEmail.TabIndex = 11;

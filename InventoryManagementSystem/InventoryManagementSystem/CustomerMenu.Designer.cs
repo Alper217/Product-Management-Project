@@ -44,15 +44,7 @@
             this.dgvSeeProducts = new System.Windows.Forms.DataGridView();
             this.lblWelcome = new System.Windows.Forms.Label();
             this.pnlMyShoppingCart = new System.Windows.Forms.Panel();
-            this.btnBuy = new System.Windows.Forms.Button();
-            this.lblTotalAmount = new System.Windows.Forms.Label();
-            this.btnBackTwo = new System.Windows.Forms.Button();
-            this.dgvMHC = new System.Windows.Forms.DataGridView();
-            this.dgvMO = new System.Windows.Forms.DataGridView();
-            this.btnBack2 = new System.Windows.Forms.Button();
-            this.pnlMO = new System.Windows.Forms.Panel();
-            this.txtBID = new System.Windows.Forms.TextBox();
-            this.btnCancel = new System.Windows.Forms.Button();
+            this.txtBSelected = new System.Windows.Forms.TextBox();
             this.pnlUS = new System.Windows.Forms.Panel();
             this.textBox6 = new System.Windows.Forms.TextBox();
             this.textBox4 = new System.Windows.Forms.TextBox();
@@ -70,22 +62,30 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.button2 = new System.Windows.Forms.Button();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.btnBuy = new System.Windows.Forms.Button();
+            this.lblTotalAmount = new System.Windows.Forms.Label();
+            this.btnBackTwo = new System.Windows.Forms.Button();
+            this.dgvMHC = new System.Windows.Forms.DataGridView();
+            this.dgvMO = new System.Windows.Forms.DataGridView();
+            this.btnBack2 = new System.Windows.Forms.Button();
+            this.pnlMO = new System.Windows.Forms.Panel();
+            this.txtBID = new System.Windows.Forms.TextBox();
+            this.btnCancel = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
             this.btnUserSettings = new System.Windows.Forms.Button();
             this.btnMyOrders = new System.Windows.Forms.Button();
             this.btnMySCart = new System.Windows.Forms.Button();
             this.btnSearchProducts = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.txtBSelected = new System.Windows.Forms.TextBox();
             this.pnlProducts.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSeeProducts)).BeginInit();
             this.pnlMyShoppingCart.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvMHC)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvMO)).BeginInit();
-            this.pnlMO.SuspendLayout();
             this.pnlUS.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvMHC)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvMO)).BeginInit();
+            this.pnlMO.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -244,103 +244,13 @@
             this.pnlMyShoppingCart.TabIndex = 11;
             this.pnlMyShoppingCart.Visible = false;
             // 
-            // btnBuy
+            // txtBSelected
             // 
-            this.btnBuy.Location = new System.Drawing.Point(14, 491);
-            this.btnBuy.Name = "btnBuy";
-            this.btnBuy.Size = new System.Drawing.Size(238, 37);
-            this.btnBuy.TabIndex = 13;
-            this.btnBuy.Text = "Buy";
-            this.btnBuy.UseVisualStyleBackColor = true;
-            this.btnBuy.Click += new System.EventHandler(this.btnBuy_Click);
-            // 
-            // lblTotalAmount
-            // 
-            this.lblTotalAmount.AutoSize = true;
-            this.lblTotalAmount.Location = new System.Drawing.Point(75, 468);
-            this.lblTotalAmount.Name = "lblTotalAmount";
-            this.lblTotalAmount.Size = new System.Drawing.Size(52, 13);
-            this.lblTotalAmount.TabIndex = 12;
-            this.lblTotalAmount.Text = "Total : 0$";
-            // 
-            // btnBackTwo
-            // 
-            this.btnBackTwo.Location = new System.Drawing.Point(639, 3);
-            this.btnBackTwo.Name = "btnBackTwo";
-            this.btnBackTwo.Size = new System.Drawing.Size(43, 23);
-            this.btnBackTwo.TabIndex = 5;
-            this.btnBackTwo.Text = "Back";
-            this.btnBackTwo.UseVisualStyleBackColor = true;
-            this.btnBackTwo.Click += new System.EventHandler(this.btnBackTwo_Click);
-            // 
-            // dgvMHC
-            // 
-            this.dgvMHC.AllowUserToAddRows = false;
-            this.dgvMHC.AllowUserToDeleteRows = false;
-            this.dgvMHC.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvMHC.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvMHC.Location = new System.Drawing.Point(0, 64);
-            this.dgvMHC.Name = "dgvMHC";
-            this.dgvMHC.ReadOnly = true;
-            this.dgvMHC.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvMHC.Size = new System.Drawing.Size(685, 365);
-            this.dgvMHC.TabIndex = 0;
-            this.dgvMHC.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMHC_CellClick_1);
-            // 
-            // dgvMO
-            // 
-            this.dgvMO.AllowUserToAddRows = false;
-            this.dgvMO.AllowUserToDeleteRows = false;
-            this.dgvMO.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvMO.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvMO.Location = new System.Drawing.Point(0, 32);
-            this.dgvMO.Name = "dgvMO";
-            this.dgvMO.ReadOnly = true;
-            this.dgvMO.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvMO.Size = new System.Drawing.Size(685, 442);
-            this.dgvMO.TabIndex = 0;
-            this.dgvMO.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
-            // 
-            // btnBack2
-            // 
-            this.btnBack2.Location = new System.Drawing.Point(639, 3);
-            this.btnBack2.Name = "btnBack2";
-            this.btnBack2.Size = new System.Drawing.Size(43, 23);
-            this.btnBack2.TabIndex = 5;
-            this.btnBack2.Text = "Back";
-            this.btnBack2.UseVisualStyleBackColor = true;
-            this.btnBack2.Click += new System.EventHandler(this.btnBack2_Click_1);
-            // 
-            // pnlMO
-            // 
-            this.pnlMO.Controls.Add(this.txtBID);
-            this.pnlMO.Controls.Add(this.btnCancel);
-            this.pnlMO.Controls.Add(this.btnBack2);
-            this.pnlMO.Controls.Add(this.dgvMO);
-            this.pnlMO.Location = new System.Drawing.Point(262, -1);
-            this.pnlMO.Name = "pnlMO";
-            this.pnlMO.Size = new System.Drawing.Size(685, 548);
-            this.pnlMO.TabIndex = 14;
-            this.pnlMO.Visible = false;
-            // 
-            // txtBID
-            // 
-            this.txtBID.Location = new System.Drawing.Point(16, 491);
-            this.txtBID.Multiline = true;
-            this.txtBID.Name = "txtBID";
-            this.txtBID.ReadOnly = true;
-            this.txtBID.Size = new System.Drawing.Size(40, 29);
-            this.txtBID.TabIndex = 7;
-            // 
-            // btnCancel
-            // 
-            this.btnCancel.Location = new System.Drawing.Point(77, 491);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(95, 29);
-            this.btnCancel.TabIndex = 6;
-            this.btnCancel.Text = "Cancel";
-            this.btnCancel.UseVisualStyleBackColor = true;
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            this.txtBSelected.Location = new System.Drawing.Point(14, 465);
+            this.txtBSelected.Name = "txtBSelected";
+            this.txtBSelected.ReadOnly = true;
+            this.txtBSelected.Size = new System.Drawing.Size(55, 20);
+            this.txtBSelected.TabIndex = 15;
             // 
             // pnlUS
             // 
@@ -508,6 +418,104 @@
             this.pictureBox3.TabIndex = 23;
             this.pictureBox3.TabStop = false;
             // 
+            // btnBuy
+            // 
+            this.btnBuy.Location = new System.Drawing.Point(14, 491);
+            this.btnBuy.Name = "btnBuy";
+            this.btnBuy.Size = new System.Drawing.Size(238, 37);
+            this.btnBuy.TabIndex = 13;
+            this.btnBuy.Text = "Buy";
+            this.btnBuy.UseVisualStyleBackColor = true;
+            this.btnBuy.Click += new System.EventHandler(this.btnBuy_Click);
+            // 
+            // lblTotalAmount
+            // 
+            this.lblTotalAmount.AutoSize = true;
+            this.lblTotalAmount.Location = new System.Drawing.Point(75, 468);
+            this.lblTotalAmount.Name = "lblTotalAmount";
+            this.lblTotalAmount.Size = new System.Drawing.Size(52, 13);
+            this.lblTotalAmount.TabIndex = 12;
+            this.lblTotalAmount.Text = "Total : 0$";
+            // 
+            // btnBackTwo
+            // 
+            this.btnBackTwo.Location = new System.Drawing.Point(639, 3);
+            this.btnBackTwo.Name = "btnBackTwo";
+            this.btnBackTwo.Size = new System.Drawing.Size(43, 23);
+            this.btnBackTwo.TabIndex = 5;
+            this.btnBackTwo.Text = "Back";
+            this.btnBackTwo.UseVisualStyleBackColor = true;
+            this.btnBackTwo.Click += new System.EventHandler(this.btnBackTwo_Click);
+            // 
+            // dgvMHC
+            // 
+            this.dgvMHC.AllowUserToAddRows = false;
+            this.dgvMHC.AllowUserToDeleteRows = false;
+            this.dgvMHC.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvMHC.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvMHC.Location = new System.Drawing.Point(0, 64);
+            this.dgvMHC.Name = "dgvMHC";
+            this.dgvMHC.ReadOnly = true;
+            this.dgvMHC.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvMHC.Size = new System.Drawing.Size(685, 365);
+            this.dgvMHC.TabIndex = 0;
+            this.dgvMHC.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMHC_CellClick_1);
+            // 
+            // dgvMO
+            // 
+            this.dgvMO.AllowUserToAddRows = false;
+            this.dgvMO.AllowUserToDeleteRows = false;
+            this.dgvMO.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvMO.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvMO.Location = new System.Drawing.Point(0, 32);
+            this.dgvMO.Name = "dgvMO";
+            this.dgvMO.ReadOnly = true;
+            this.dgvMO.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvMO.Size = new System.Drawing.Size(685, 442);
+            this.dgvMO.TabIndex = 0;
+            this.dgvMO.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            // 
+            // btnBack2
+            // 
+            this.btnBack2.Location = new System.Drawing.Point(639, 3);
+            this.btnBack2.Name = "btnBack2";
+            this.btnBack2.Size = new System.Drawing.Size(43, 23);
+            this.btnBack2.TabIndex = 5;
+            this.btnBack2.Text = "Back";
+            this.btnBack2.UseVisualStyleBackColor = true;
+            this.btnBack2.Click += new System.EventHandler(this.btnBack2_Click_1);
+            // 
+            // pnlMO
+            // 
+            this.pnlMO.Controls.Add(this.txtBID);
+            this.pnlMO.Controls.Add(this.btnCancel);
+            this.pnlMO.Controls.Add(this.btnBack2);
+            this.pnlMO.Controls.Add(this.dgvMO);
+            this.pnlMO.Location = new System.Drawing.Point(262, -1);
+            this.pnlMO.Name = "pnlMO";
+            this.pnlMO.Size = new System.Drawing.Size(685, 548);
+            this.pnlMO.TabIndex = 14;
+            this.pnlMO.Visible = false;
+            // 
+            // txtBID
+            // 
+            this.txtBID.Location = new System.Drawing.Point(16, 491);
+            this.txtBID.Multiline = true;
+            this.txtBID.Name = "txtBID";
+            this.txtBID.ReadOnly = true;
+            this.txtBID.Size = new System.Drawing.Size(40, 29);
+            this.txtBID.TabIndex = 7;
+            // 
+            // btnCancel
+            // 
+            this.btnCancel.Location = new System.Drawing.Point(77, 491);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(95, 29);
+            this.btnCancel.TabIndex = 6;
+            this.btnCancel.Text = "Cancel";
+            this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            // 
             // btnExit
             // 
             this.btnExit.BackColor = System.Drawing.Color.IndianRed;
@@ -593,14 +601,6 @@
             this.pictureBox1.TabIndex = 17;
             this.pictureBox1.TabStop = false;
             // 
-            // txtBSelected
-            // 
-            this.txtBSelected.Location = new System.Drawing.Point(14, 465);
-            this.txtBSelected.Name = "txtBSelected";
-            this.txtBSelected.ReadOnly = true;
-            this.txtBSelected.Size = new System.Drawing.Size(55, 20);
-            this.txtBSelected.TabIndex = 15;
-            // 
             // CustomerMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -628,14 +628,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvSeeProducts)).EndInit();
             this.pnlMyShoppingCart.ResumeLayout(false);
             this.pnlMyShoppingCart.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvMHC)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvMO)).EndInit();
-            this.pnlMO.ResumeLayout(false);
-            this.pnlMO.PerformLayout();
             this.pnlUS.ResumeLayout(false);
             this.pnlUS.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvMHC)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvMO)).EndInit();
+            this.pnlMO.ResumeLayout(false);
+            this.pnlMO.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -18,8 +18,17 @@ namespace InventoryManagementSystem
     
     public partial class CustomerMenu : Form
     {
+        public static class GlobalVariablesTotalPrice
+        {
+            public static int TotalPrice { get; set; }
+        }
+        public static class GlobalVariablesOrders
+        {
+            public static int orderID { get; set; }
+            public static int orderDetails { get; set; }
+            public static string productID { get; set; }
+        }
         string connectionString = "Server=Alper;Database=InventoryManagementSystem;User Id=sa;Password=1;";
-      
         public CustomerMenu()
         {
             InitializeComponent();
@@ -102,6 +111,7 @@ namespace InventoryManagementSystem
                     if (result != DBNull.Value)
                     {
                         lblTotalAmount.Text = "Total Price: " + result.ToString() + "$";
+                        
                     }
                     else
                     {
@@ -225,6 +235,7 @@ namespace InventoryManagementSystem
                 DataGridViewRow selectedRow = dgvSeeProducts.SelectedRows[0];
                 string productName = selectedRow.Cells["ProductName"].Value.ToString();
                 string productId = selectedRow.Cells["ProductID"].Value.ToString();
+                GlobalVariablesOrders.productID = productId;
                 object price = selectedRow.Cells["UnitPrice"].Value;
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {
@@ -299,58 +310,92 @@ namespace InventoryManagementSystem
             int userId = GlobalVariables.UserId;
             string userName = GlobalVariables.UserName;
 
-            if (dgvMHC.Rows.Count > 0)
+            if (dgvMHC.SelectedRows.Count > 0)
             {
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {
                     conn.Open();
-                    foreach (DataGridViewRow row in dgvMHC.Rows)
+
+                    foreach (DataGridViewRow row in dgvMHC.SelectedRows)
                     {
-                        // Satır doluysa işlem yap
                         if (!row.IsNewRow && !row.Cells.Cast<DataGridViewCell>().All(c => c.Value == null))
                         {
                             decimal price = Convert.ToDecimal(row.Cells["Price"].Value);
                             int amount = Convert.ToInt32(row.Cells["Amount"].Value);
+                            int productId = Convert.ToInt32(row.Cells["ProductID"].Value);
+
+                            GlobalVariablesOrders.orderDetails = amount;
                             string insertQuery = "INSERT INTO Orders_Table (CustomerID, OrderDate, TotalAmount, OrderStatus, PieceCount) " +
-                                                 "VALUES (@CustomerID, @OrderDate, @TotalAmount,'Order Taken', @PieceCount)";
-                            SqlCommand insertCommand = new SqlCommand(insertQuery, conn);
-                            insertCommand.Parameters.AddWithValue("@CustomerID", userId);
-                            insertCommand.Parameters.AddWithValue("@OrderDate", DateTime.Now);
-                            insertCommand.Parameters.AddWithValue("@TotalAmount", price);
-                            insertCommand.Parameters.AddWithValue("@PieceCount", amount);
-                            insertCommand.ExecuteNonQuery();
+                                                 "OUTPUT INSERTED.OrderID " +
+                                                 "VALUES (@CustomerID, @OrderDate, @TotalAmount, 'Order Taken', @PieceCount)";
+
+                            using (SqlCommand insertCommand = new SqlCommand(insertQuery, conn))
+                            {
+                                insertCommand.Parameters.AddWithValue("@CustomerID", userId);
+                                insertCommand.Parameters.AddWithValue("@OrderDate", DateTime.Now);
+                                insertCommand.Parameters.AddWithValue("@TotalAmount", price);
+                                insertCommand.Parameters.AddWithValue("@PieceCount", amount);
+
+                                int newOrderId = (int)insertCommand.ExecuteScalar();
+                                GlobalVariablesOrders.orderID = newOrderId;
+                            }
+                            string updateStockQuery = "UPDATE Products_Table SET StockAmount = StockAmount - 1 WHERE ProductID = @ProductID";
+
+                            using (SqlCommand updateStockCommand = new SqlCommand(updateStockQuery, conn))
+                            {
+                                updateStockCommand.Parameters.AddWithValue("@ProductID", productId);
+                                updateStockCommand.ExecuteNonQuery();
+                            }
+                            string deleteCardListQuery = "DELETE FROM CardList WHERE ProductID = @ProductID"; // buraya bak
+
+                            using (SqlCommand deleteCardListCommand = new SqlCommand(deleteCardListQuery, conn))
+                            {
+                                deleteCardListCommand.Parameters.AddWithValue("@ProductID", productId);
+                                deleteCardListCommand.ExecuteNonQuery();
+                            }
+                            MessageBox.Show("Product was purchased");
                         }
                     }
-                    string clearCartQuery = "DELETE FROM CardList WHERE UserID = @UserID";
-                    SqlCommand clearCartCommand = new SqlCommand(clearCartQuery, conn);
-                    clearCartCommand.Parameters.AddWithValue("@UserID", userId);
-                    clearCartCommand.ExecuteNonQuery();
-
-                    MessageBox.Show("Order placed successfully!");
 
                     conn.Close();
+                }
+            }
+            else
+            {
+                MessageBox.Show("No items selected. Please select products before proceeding.");
+            }
+
+            using (SqlConnection connection2 = new SqlConnection(connectionString))
+                {
+                    string currentTime = DateTime.Now.ToString();
+                    connection2.Open();
+                    string queryStatus = "INSERT INTO OrderInformations_Table (OrderID, CustomerID, ProcessDate, Status, ByWho) VALUES (@OrderID, @CustomerID, @ProcessDate, 'Order Taken', @ByWho);";
+                    using (SqlCommand command = new SqlCommand(queryStatus, connection2))
+                    {
+                        command.Parameters.AddWithValue("@OrderID", GlobalVariablesOrders.orderID);
+                        command.Parameters.AddWithValue("@CustomerID", GlobalVariablesCustomer.CustomerId);
+                        command.Parameters.AddWithValue("@ProcessDate", currentTime);
+                        command.Parameters.AddWithValue("@ByWho", GlobalVariables.UserName);
+                        command.ExecuteNonQuery();
+                    }
+                    connection2.Close();
                 }
                 using (SqlConnection connection2 = new SqlConnection(connectionString))
                 {
                     string currentTime = DateTime.Now.ToString();
                     connection2.Open();
-                        string queryStatus = "INSERT INTO OrderInformations_Table (OrderID, CustomerID, ProcessDate, Status, ByWho) VALUES (@OrderID, @CustomerID, @ProcessDate, 'Order Taken', @ByWho);";
-                        using (SqlCommand command = new SqlCommand(queryStatus, connection2))
-                        {
-                            command.Parameters.AddWithValue("@OrderID", txtBSelected.Text);
-                            command.Parameters.AddWithValue("@CustomerID", GlobalVariablesCustomer.CustomerId);
-                            command.Parameters.AddWithValue("@ProcessDate", currentTime);
-                            command.Parameters.AddWithValue("@ByWho",GlobalVariables.UserName);
-                            command.ExecuteNonQuery();
-                        }
-                        connection2.Close();
+                    string queryStatus = "INSERT INTO OrderDetails_Table (OrderID, ProductID, Piece) VALUES (@OrderID, @ProductID, @Piece);";
+                    using (SqlCommand commandDetails = new SqlCommand(queryStatus, connection2))
+                    {
+                        commandDetails.Parameters.AddWithValue("@OrderID", GlobalVariablesOrders.orderID);
+                        commandDetails.Parameters.AddWithValue("@ProductID", txtBID.Text);
+                        commandDetails.Parameters.AddWithValue("@Piece", GlobalVariablesOrders.orderDetails);
+                        commandDetails.ExecuteNonQuery();   //hatalı buradan kaldım
+                    }
+                    connection2.Close();
                 }
-            }
-            else
-            {
-                MessageBox.Show("Shopping cart is empty. Please add products before proceeding.");
-            }
         }
+
         // My Orders Buttons
         private void btnBack2_Click_1(object sender, EventArgs e)
         {
@@ -374,33 +419,54 @@ namespace InventoryManagementSystem
             {
                 DataGridViewRow selectedRow = dgvMO.SelectedRows[0];
                 int orderId = Convert.ToInt32(selectedRow.Cells["OrderID"].Value);
+                int totalAmount = Convert.ToInt32(selectedRow.Cells["TotalAmount"].Value); // Seçilen satırın TotalAmount değerini al
                 string sql = "DELETE FROM Orders_Table WHERE OrderID=@orderId AND (OrderStatus='Order Taken' OR OrderStatus='Preparing')";
-
+                // Order Cancel Interaction
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {
                     using (SqlCommand cmd = new SqlCommand(sql, conn))
                     {
                         cmd.Parameters.AddWithValue("@orderId", orderId);
-                            conn.Open();
-                            int rowsAffected = cmd.ExecuteNonQuery();
+                        conn.Open();
+                        int rowsAffected = cmd.ExecuteNonQuery();
 
-                            if (rowsAffected > 0)
+                        if (rowsAffected > 0)
+                        {
+                            MessageBox.Show("Order canceled.");
+
+                            // Canceled Products Log
+                            string sqlCancel = "INSERT INTO CanceledOrders_Table (CustomerID, ProductID, TotalAmount, ByWho) VALUES (@CustomerID, @ProductID, @TotalAmount, @ByWho)";
+                            using (SqlCommand logCmd = new SqlCommand(sqlCancel, conn))
                             {
-                                MessageBox.Show("Order canceled.");
+                                logCmd.Parameters.AddWithValue("@CustomerID", GlobalVariablesCustomer.CustomerId);
+                                logCmd.Parameters.AddWithValue("@ProductID", orderId); // Bu satırda orderId kullandım, eğer ProductID'nin başka bir yere eşitlenmesi gerekiyorsa onu kullan.
+                                logCmd.Parameters.AddWithValue("@TotalAmount", totalAmount); // Önceki adımda aldığımız totalAmount'u kullan
+                                logCmd.Parameters.AddWithValue("@ByWho", GlobalVariables.UserName);
+                                int logRowsAffected = logCmd.ExecuteNonQuery();
                             }
-                            else
-                            {
-                                MessageBox.Show("The order can no longer be canceled");
-                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("The order can no longer be canceled");
+                        }
+                    }
+                    string updateStockQuery = "UPDATE Products_Table SET StockAmount = StockAmount + 1 WHERE ProductID = @ProductID";
+
+                    using (SqlCommand updateStockCommand = new SqlCommand(updateStockQuery, conn))
+                    {
+                        updateStockCommand.Parameters.AddWithValue("@ProductID", GlobalVariablesOrders.productID);
+                        updateStockCommand.ExecuteNonQuery();
                     }
                 }
+
             }
             else
             {
                 MessageBox.Show("Please select a row to delete.");
             }
-
+           
         }
+
         // Çıkış tuşu
         private void btnExit_Click_1(object sender, EventArgs e)
         {

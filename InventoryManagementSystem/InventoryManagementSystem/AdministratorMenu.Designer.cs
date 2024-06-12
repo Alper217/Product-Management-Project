@@ -107,17 +107,16 @@
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.pnlR = new System.Windows.Forms.Panel();
+            this.lblTotalPrice = new System.Windows.Forms.Label();
             this.dgvUI = new System.Windows.Forms.DataGridView();
             this.label16 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.chart3 = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.btnDate = new System.Windows.Forms.Button();
             this.chart2 = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.label14 = new System.Windows.Forms.Label();
-            this.txtBDates = new System.Windows.Forms.TextBox();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.dgvProductInformation = new System.Windows.Forms.DataGridView();
             this.btnQuit = new System.Windows.Forms.Button();
+            this.lblTotalAmount = new System.Windows.Forms.Label();
             this.pnlUM.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUM)).BeginInit();
             this.pnlPM.SuspendLayout();
@@ -827,14 +826,13 @@
             // 
             // pnlR
             // 
+            this.pnlR.Controls.Add(this.lblTotalAmount);
+            this.pnlR.Controls.Add(this.lblTotalPrice);
             this.pnlR.Controls.Add(this.dgvUI);
             this.pnlR.Controls.Add(this.label16);
             this.pnlR.Controls.Add(this.label15);
             this.pnlR.Controls.Add(this.chart3);
-            this.pnlR.Controls.Add(this.btnDate);
             this.pnlR.Controls.Add(this.chart2);
-            this.pnlR.Controls.Add(this.label14);
-            this.pnlR.Controls.Add(this.txtBDates);
             this.pnlR.Controls.Add(this.chart1);
             this.pnlR.Controls.Add(this.dgvProductInformation);
             this.pnlR.Location = new System.Drawing.Point(186, 12);
@@ -842,6 +840,15 @@
             this.pnlR.Size = new System.Drawing.Size(1075, 656);
             this.pnlR.TabIndex = 20;
             this.pnlR.Visible = false;
+            // 
+            // lblTotalPrice
+            // 
+            this.lblTotalPrice.AutoSize = true;
+            this.lblTotalPrice.Location = new System.Drawing.Point(760, 223);
+            this.lblTotalPrice.Name = "lblTotalPrice";
+            this.lblTotalPrice.Size = new System.Drawing.Size(56, 13);
+            this.lblTotalPrice.TabIndex = 9;
+            this.lblTotalPrice.Text = "Total Loss";
             // 
             // dgvUI
             // 
@@ -891,49 +898,24 @@
             this.chart3.TabIndex = 3;
             this.chart3.Text = "chart3";
             // 
-            // btnDate
-            // 
-            this.btnDate.Location = new System.Drawing.Point(567, 249);
-            this.btnDate.Name = "btnDate";
-            this.btnDate.Size = new System.Drawing.Size(75, 26);
-            this.btnDate.TabIndex = 3;
-            this.btnDate.Text = "button1";
-            this.btnDate.UseVisualStyleBackColor = true;
-            // 
             // chart2
             // 
             chartArea2.Name = "ChartArea1";
             this.chart2.ChartAreas.Add(chartArea2);
+            this.chart2.Cursor = System.Windows.Forms.Cursors.No;
             legend2.Name = "Legend1";
             this.chart2.Legends.Add(legend2);
-            this.chart2.Location = new System.Drawing.Point(373, 19);
+            this.chart2.Location = new System.Drawing.Point(359, 19);
             this.chart2.Name = "chart2";
             this.chart2.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Berry;
             series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Bar;
             series2.Legend = "Legend1";
             series2.Name = "Series4";
             this.chart2.Series.Add(series2);
-            this.chart2.Size = new System.Drawing.Size(311, 199);
+            this.chart2.Size = new System.Drawing.Size(345, 199);
             this.chart2.TabIndex = 2;
             this.chart2.Text = "chart2";
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(403, 233);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(67, 13);
-            this.label14.TabIndex = 5;
-            this.label14.Text = "Search Date";
-            // 
-            // txtBDates
-            // 
-            this.txtBDates.Location = new System.Drawing.Point(406, 249);
-            this.txtBDates.Multiline = true;
-            this.txtBDates.Name = "txtBDates";
-            this.txtBDates.Size = new System.Drawing.Size(140, 26);
-            this.txtBDates.TabIndex = 4;
             // 
             // chart1
             // 
@@ -974,6 +956,15 @@
             this.btnQuit.Text = "Quit";
             this.btnQuit.UseVisualStyleBackColor = true;
             this.btnQuit.Click += new System.EventHandler(this.btnQuit_Click);
+            // 
+            // lblTotalAmount
+            // 
+            this.lblTotalAmount.AutoSize = true;
+            this.lblTotalAmount.Location = new System.Drawing.Point(388, 223);
+            this.lblTotalAmount.Name = "lblTotalAmount";
+            this.lblTotalAmount.Size = new System.Drawing.Size(76, 13);
+            this.lblTotalAmount.TabIndex = 10;
+            this.lblTotalAmount.Text = "Total Amount :";
             // 
             // AdministratorMenu
             // 
@@ -1110,13 +1101,12 @@
         private System.Windows.Forms.TextBox txtBDealer;
         private System.Windows.Forms.Label lblDealer;
         private System.Windows.Forms.Button btnQuit;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.TextBox txtBDates;
-        private System.Windows.Forms.Button btnDate;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart3;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart2;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.DataGridView dgvUI;
+        private System.Windows.Forms.Label lblTotalPrice;
+        private System.Windows.Forms.Label lblTotalAmount;
     }
 }
