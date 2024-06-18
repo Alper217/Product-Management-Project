@@ -45,27 +45,25 @@
             this.lblWelcome = new System.Windows.Forms.Label();
             this.pnlMyShoppingCart = new System.Windows.Forms.Panel();
             this.txtBSelected = new System.Windows.Forms.TextBox();
-            this.pnlUS = new System.Windows.Forms.Panel();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.btnBuy = new System.Windows.Forms.Button();
             this.lblTotalAmount = new System.Windows.Forms.Label();
             this.btnBackTwo = new System.Windows.Forms.Button();
             this.dgvMHC = new System.Windows.Forms.DataGridView();
+            this.pnlUS = new System.Windows.Forms.Panel();
+            this.txtBNewPassword2 = new System.Windows.Forms.TextBox();
+            this.txtBOldPassword = new System.Windows.Forms.TextBox();
+            this.btnChangePassword = new System.Windows.Forms.Button();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.txtBNewPassword = new System.Windows.Forms.TextBox();
+            this.txtBSUS = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txtBMailUS = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.button2 = new System.Windows.Forms.Button();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.dgvMO = new System.Windows.Forms.DataGridView();
             this.btnBack2 = new System.Windows.Forms.Button();
             this.pnlMO = new System.Windows.Forms.Panel();
@@ -80,10 +78,10 @@
             this.pnlProducts.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSeeProducts)).BeginInit();
             this.pnlMyShoppingCart.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvMHC)).BeginInit();
             this.pnlUS.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvMHC)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMO)).BeginInit();
             this.pnlMO.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -252,172 +250,6 @@
             this.txtBSelected.Size = new System.Drawing.Size(55, 20);
             this.txtBSelected.TabIndex = 15;
             // 
-            // pnlUS
-            // 
-            this.pnlUS.BackColor = System.Drawing.Color.LightGray;
-            this.pnlUS.Controls.Add(this.textBox6);
-            this.pnlUS.Controls.Add(this.textBox4);
-            this.pnlUS.Controls.Add(this.button1);
-            this.pnlUS.Controls.Add(this.label10);
-            this.pnlUS.Controls.Add(this.label9);
-            this.pnlUS.Controls.Add(this.label8);
-            this.pnlUS.Controls.Add(this.textBox5);
-            this.pnlUS.Controls.Add(this.textBox2);
-            this.pnlUS.Controls.Add(this.label7);
-            this.pnlUS.Controls.Add(this.textBox3);
-            this.pnlUS.Controls.Add(this.textBox1);
-            this.pnlUS.Controls.Add(this.label6);
-            this.pnlUS.Controls.Add(this.label5);
-            this.pnlUS.Controls.Add(this.pictureBox2);
-            this.pnlUS.Controls.Add(this.button2);
-            this.pnlUS.Controls.Add(this.pictureBox3);
-            this.pnlUS.Location = new System.Drawing.Point(262, -1);
-            this.pnlUS.Name = "pnlUS";
-            this.pnlUS.Size = new System.Drawing.Size(688, 548);
-            this.pnlUS.TabIndex = 15;
-            this.pnlUS.Visible = false;
-            // 
-            // textBox6
-            // 
-            this.textBox6.Location = new System.Drawing.Point(355, 392);
-            this.textBox6.Multiline = true;
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(181, 31);
-            this.textBox6.TabIndex = 22;
-            // 
-            // textBox4
-            // 
-            this.textBox4.Location = new System.Drawing.Point(355, 319);
-            this.textBox4.Multiline = true;
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(181, 31);
-            this.textBox4.TabIndex = 21;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(348, 450);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(197, 39);
-            this.button1.TabIndex = 20;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(355, 376);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(41, 13);
-            this.label10.TabIndex = 19;
-            this.label10.Text = "label10";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(355, 303);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(35, 13);
-            this.label9.TabIndex = 18;
-            this.label9.Text = "label9";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(355, 233);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(35, 13);
-            this.label8.TabIndex = 17;
-            this.label8.Text = "label8";
-            // 
-            // textBox5
-            // 
-            this.textBox5.Location = new System.Drawing.Point(355, 249);
-            this.textBox5.Multiline = true;
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(181, 31);
-            this.textBox5.TabIndex = 14;
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(504, 64);
-            this.textBox2.Multiline = true;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(132, 38);
-            this.textBox2.TabIndex = 13;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(268, 124);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(36, 13);
-            this.label7.TabIndex = 12;
-            this.label7.Text = "E-Mail";
-            // 
-            // textBox3
-            // 
-            this.textBox3.Location = new System.Drawing.Point(271, 140);
-            this.textBox3.Multiline = true;
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(365, 33);
-            this.textBox3.TabIndex = 11;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(271, 64);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(132, 38);
-            this.textBox1.TabIndex = 9;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(501, 48);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(49, 13);
-            this.label6.TabIndex = 8;
-            this.label6.Text = "Surname";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(268, 48);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(35, 13);
-            this.label5.TabIndex = 7;
-            this.label5.Text = "Name";
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.BackColor = System.Drawing.Color.DarkGray;
-            this.pictureBox2.BackgroundImage = global::InventoryManagementSystem.Properties.Resources.images;
-            this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox2.Location = new System.Drawing.Point(25, 13);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(200, 205);
-            this.pictureBox2.TabIndex = 6;
-            this.pictureBox2.TabStop = false;
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(639, 3);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(43, 23);
-            this.button2.TabIndex = 5;
-            this.button2.Text = "Back";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // pictureBox3
-            // 
-            this.pictureBox3.BackColor = System.Drawing.Color.Black;
-            this.pictureBox3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox3.Location = new System.Drawing.Point(16, 3);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(220, 224);
-            this.pictureBox3.TabIndex = 23;
-            this.pictureBox3.TabStop = false;
-            // 
             // btnBuy
             // 
             this.btnBuy.Location = new System.Drawing.Point(14, 491);
@@ -460,6 +292,154 @@
             this.dgvMHC.Size = new System.Drawing.Size(685, 365);
             this.dgvMHC.TabIndex = 0;
             this.dgvMHC.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMHC_CellClick_1);
+            // 
+            // pnlUS
+            // 
+            this.pnlUS.BackColor = System.Drawing.Color.LightGray;
+            this.pnlUS.Controls.Add(this.txtBNewPassword2);
+            this.pnlUS.Controls.Add(this.txtBOldPassword);
+            this.pnlUS.Controls.Add(this.btnChangePassword);
+            this.pnlUS.Controls.Add(this.label10);
+            this.pnlUS.Controls.Add(this.label9);
+            this.pnlUS.Controls.Add(this.label8);
+            this.pnlUS.Controls.Add(this.txtBNewPassword);
+            this.pnlUS.Controls.Add(this.txtBSUS);
+            this.pnlUS.Controls.Add(this.label7);
+            this.pnlUS.Controls.Add(this.txtBMailUS);
+            this.pnlUS.Controls.Add(this.label6);
+            this.pnlUS.Controls.Add(this.pictureBox2);
+            this.pnlUS.Controls.Add(this.button2);
+            this.pnlUS.Controls.Add(this.pictureBox3);
+            this.pnlUS.Location = new System.Drawing.Point(262, -1);
+            this.pnlUS.Name = "pnlUS";
+            this.pnlUS.Size = new System.Drawing.Size(688, 548);
+            this.pnlUS.TabIndex = 15;
+            this.pnlUS.Visible = false;
+            // 
+            // txtBNewPassword2
+            // 
+            this.txtBNewPassword2.Location = new System.Drawing.Point(355, 392);
+            this.txtBNewPassword2.Multiline = true;
+            this.txtBNewPassword2.Name = "txtBNewPassword2";
+            this.txtBNewPassword2.Size = new System.Drawing.Size(181, 31);
+            this.txtBNewPassword2.TabIndex = 22;
+            // 
+            // txtBOldPassword
+            // 
+            this.txtBOldPassword.Location = new System.Drawing.Point(355, 260);
+            this.txtBOldPassword.Multiline = true;
+            this.txtBOldPassword.Name = "txtBOldPassword";
+            this.txtBOldPassword.Size = new System.Drawing.Size(181, 31);
+            this.txtBOldPassword.TabIndex = 21;
+            // 
+            // btnChangePassword
+            // 
+            this.btnChangePassword.Location = new System.Drawing.Point(348, 450);
+            this.btnChangePassword.Name = "btnChangePassword";
+            this.btnChangePassword.Size = new System.Drawing.Size(197, 39);
+            this.btnChangePassword.TabIndex = 20;
+            this.btnChangePassword.Text = "Change Password";
+            this.btnChangePassword.UseVisualStyleBackColor = true;
+            this.btnChangePassword.Click += new System.EventHandler(this.btnChangePassword_Click);
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(355, 376);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(108, 13);
+            this.label10.TabIndex = 19;
+            this.label10.Text = "New Password Again";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(355, 303);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(78, 13);
+            this.label9.TabIndex = 18;
+            this.label9.Text = "New Password";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(355, 233);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(72, 13);
+            this.label8.TabIndex = 17;
+            this.label8.Text = "Old Password";
+            // 
+            // txtBNewPassword
+            // 
+            this.txtBNewPassword.Location = new System.Drawing.Point(355, 331);
+            this.txtBNewPassword.Multiline = true;
+            this.txtBNewPassword.Name = "txtBNewPassword";
+            this.txtBNewPassword.Size = new System.Drawing.Size(181, 31);
+            this.txtBNewPassword.TabIndex = 14;
+            // 
+            // txtBSUS
+            // 
+            this.txtBSUS.Location = new System.Drawing.Point(271, 54);
+            this.txtBSUS.Multiline = true;
+            this.txtBSUS.Name = "txtBSUS";
+            this.txtBSUS.Size = new System.Drawing.Size(132, 38);
+            this.txtBSUS.TabIndex = 13;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(268, 116);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(36, 13);
+            this.label7.TabIndex = 12;
+            this.label7.Text = "E-Mail";
+            // 
+            // txtBMailUS
+            // 
+            this.txtBMailUS.Location = new System.Drawing.Point(271, 132);
+            this.txtBMailUS.Multiline = true;
+            this.txtBMailUS.Name = "txtBMailUS";
+            this.txtBMailUS.Size = new System.Drawing.Size(365, 33);
+            this.txtBMailUS.TabIndex = 11;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(275, 38);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(55, 13);
+            this.label6.TabIndex = 8;
+            this.label6.Text = "Username";
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BackColor = System.Drawing.Color.DarkGray;
+            this.pictureBox2.BackgroundImage = global::InventoryManagementSystem.Properties.Resources.images;
+            this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox2.Location = new System.Drawing.Point(25, 13);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(200, 205);
+            this.pictureBox2.TabIndex = 6;
+            this.pictureBox2.TabStop = false;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(639, 3);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(43, 23);
+            this.button2.TabIndex = 5;
+            this.button2.Text = "Back";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.BackColor = System.Drawing.Color.Black;
+            this.pictureBox3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox3.Location = new System.Drawing.Point(16, 3);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(220, 224);
+            this.pictureBox3.TabIndex = 23;
+            this.pictureBox3.TabStop = false;
             // 
             // dgvMO
             // 
@@ -628,11 +608,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvSeeProducts)).EndInit();
             this.pnlMyShoppingCart.ResumeLayout(false);
             this.pnlMyShoppingCart.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvMHC)).EndInit();
             this.pnlUS.ResumeLayout(false);
             this.pnlUS.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvMHC)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMO)).EndInit();
             this.pnlMO.ResumeLayout(false);
             this.pnlMO.PerformLayout();
@@ -677,18 +657,16 @@
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtBSUS;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtBMailUS;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox txtBNewPassword;
+        private System.Windows.Forms.TextBox txtBNewPassword2;
+        private System.Windows.Forms.TextBox txtBOldPassword;
+        private System.Windows.Forms.Button btnChangePassword;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.TextBox txtBSelected;

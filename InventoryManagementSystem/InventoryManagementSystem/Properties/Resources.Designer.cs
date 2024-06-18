@@ -93,6 +93,16 @@ namespace InventoryManagementSystem.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap But_5 {
+            get {
+                object obj = ResourceManager.GetObject("But-5", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap buttonpng {
             get {
                 object obj = ResourceManager.GetObject("buttonpng", resourceCulture);
@@ -126,6 +136,26 @@ namespace InventoryManagementSystem.Properties {
         internal static System.Drawing.Bitmap e {
             get {
                 object obj = ResourceManager.GetObject("e", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Gold_Button_010 {
+            get {
+                object obj = ResourceManager.GetObject("Gold_Button_010", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap hatalı {
+            get {
+                object obj = ResourceManager.GetObject("hatalı", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -186,6 +216,16 @@ namespace InventoryManagementSystem.Properties {
         internal static System.Drawing.Bitmap SL_060521_43530_17 {
             get {
                 object obj = ResourceManager.GetObject("SL_060521_43530_17", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap twocolor {
+            get {
+                object obj = ResourceManager.GetObject("twocolor", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

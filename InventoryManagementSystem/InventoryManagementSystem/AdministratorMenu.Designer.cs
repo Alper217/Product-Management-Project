@@ -100,13 +100,8 @@
             this.btnSearchCN = new System.Windows.Forms.Button();
             this.txtBCNS = new System.Windows.Forms.TextBox();
             this.dgvCM = new System.Windows.Forms.DataGridView();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
             this.pnlR = new System.Windows.Forms.Panel();
+            this.lblTotalAmount = new System.Windows.Forms.Label();
             this.lblTotalPrice = new System.Windows.Forms.Label();
             this.dgvUI = new System.Windows.Forms.DataGridView();
             this.label16 = new System.Windows.Forms.Label();
@@ -116,7 +111,6 @@
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.dgvProductInformation = new System.Windows.Forms.DataGridView();
             this.btnQuit = new System.Windows.Forms.Button();
-            this.lblTotalAmount = new System.Windows.Forms.Label();
             this.pnlUM.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUM)).BeginInit();
             this.pnlPM.SuspendLayout();
@@ -141,7 +135,7 @@
             // 
             this.btnPM.Location = new System.Drawing.Point(22, 63);
             this.btnPM.Name = "btnPM";
-            this.btnPM.Size = new System.Drawing.Size(135, 26);
+            this.btnPM.Size = new System.Drawing.Size(135, 47);
             this.btnPM.TabIndex = 0;
             this.btnPM.Text = "Product Management";
             this.btnPM.UseVisualStyleBackColor = true;
@@ -159,9 +153,9 @@
             // 
             // btnSC
             // 
-            this.btnSC.Location = new System.Drawing.Point(22, 113);
+            this.btnSC.Location = new System.Drawing.Point(22, 139);
             this.btnSC.Name = "btnSC";
-            this.btnSC.Size = new System.Drawing.Size(135, 26);
+            this.btnSC.Size = new System.Drawing.Size(135, 46);
             this.btnSC.TabIndex = 2;
             this.btnSC.Text = "Stock Control";
             this.btnSC.UseVisualStyleBackColor = true;
@@ -169,9 +163,9 @@
             // 
             // btnOM
             // 
-            this.btnOM.Location = new System.Drawing.Point(22, 167);
+            this.btnOM.Location = new System.Drawing.Point(22, 214);
             this.btnOM.Name = "btnOM";
-            this.btnOM.Size = new System.Drawing.Size(135, 26);
+            this.btnOM.Size = new System.Drawing.Size(135, 54);
             this.btnOM.TabIndex = 3;
             this.btnOM.Text = "Order Management";
             this.btnOM.UseVisualStyleBackColor = true;
@@ -179,9 +173,9 @@
             // 
             // btnSM
             // 
-            this.btnSM.Location = new System.Drawing.Point(22, 222);
+            this.btnSM.Location = new System.Drawing.Point(22, 298);
             this.btnSM.Name = "btnSM";
-            this.btnSM.Size = new System.Drawing.Size(135, 26);
+            this.btnSM.Size = new System.Drawing.Size(135, 54);
             this.btnSM.TabIndex = 4;
             this.btnSM.Text = "Supplier Management";
             this.btnSM.UseVisualStyleBackColor = true;
@@ -189,9 +183,9 @@
             // 
             // btnCM
             // 
-            this.btnCM.Location = new System.Drawing.Point(22, 281);
+            this.btnCM.Location = new System.Drawing.Point(22, 389);
             this.btnCM.Name = "btnCM";
-            this.btnCM.Size = new System.Drawing.Size(135, 26);
+            this.btnCM.Size = new System.Drawing.Size(135, 52);
             this.btnCM.TabIndex = 5;
             this.btnCM.Text = "Customer Management";
             this.btnCM.UseVisualStyleBackColor = true;
@@ -199,9 +193,9 @@
             // 
             // btnR
             // 
-            this.btnR.Location = new System.Drawing.Point(22, 395);
+            this.btnR.Location = new System.Drawing.Point(22, 556);
             this.btnR.Name = "btnR";
-            this.btnR.Size = new System.Drawing.Size(135, 26);
+            this.btnR.Size = new System.Drawing.Size(135, 46);
             this.btnR.TabIndex = 6;
             this.btnR.Text = "Reporting";
             this.btnR.UseVisualStyleBackColor = true;
@@ -320,9 +314,9 @@
             // 
             // btnUM
             // 
-            this.btnUM.Location = new System.Drawing.Point(22, 341);
+            this.btnUM.Location = new System.Drawing.Point(22, 473);
             this.btnUM.Name = "btnUM";
-            this.btnUM.Size = new System.Drawing.Size(135, 26);
+            this.btnUM.Size = new System.Drawing.Size(135, 54);
             this.btnUM.TabIndex = 8;
             this.btnUM.Text = "User Management";
             this.btnUM.UseVisualStyleBackColor = true;
@@ -764,66 +758,6 @@
             this.dgvCM.Size = new System.Drawing.Size(608, 282);
             this.dgvCM.TabIndex = 0;
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label1.Location = new System.Drawing.Point(163, 346);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(17, 17);
-            this.label1.TabIndex = 14;
-            this.label1.Text = "+";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label2.Location = new System.Drawing.Point(163, 68);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(17, 17);
-            this.label2.TabIndex = 14;
-            this.label2.Text = "+";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label3.Location = new System.Drawing.Point(163, 227);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(17, 17);
-            this.label3.TabIndex = 15;
-            this.label3.Text = "+";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label10.Location = new System.Drawing.Point(163, 118);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(17, 17);
-            this.label10.TabIndex = 16;
-            this.label10.Text = "+";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label12.Location = new System.Drawing.Point(163, 286);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(17, 17);
-            this.label12.TabIndex = 17;
-            this.label12.Text = "+";
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label13.Location = new System.Drawing.Point(163, 172);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(17, 17);
-            this.label13.TabIndex = 18;
-            this.label13.Text = "+";
-            // 
             // pnlR
             // 
             this.pnlR.Controls.Add(this.lblTotalAmount);
@@ -840,6 +774,15 @@
             this.pnlR.Size = new System.Drawing.Size(1075, 656);
             this.pnlR.TabIndex = 20;
             this.pnlR.Visible = false;
+            // 
+            // lblTotalAmount
+            // 
+            this.lblTotalAmount.AutoSize = true;
+            this.lblTotalAmount.Location = new System.Drawing.Point(388, 223);
+            this.lblTotalAmount.Name = "lblTotalAmount";
+            this.lblTotalAmount.Size = new System.Drawing.Size(76, 13);
+            this.lblTotalAmount.TabIndex = 10;
+            this.lblTotalAmount.Text = "Total Amount :";
             // 
             // lblTotalPrice
             // 
@@ -949,22 +892,13 @@
             // 
             // btnQuit
             // 
-            this.btnQuit.Location = new System.Drawing.Point(22, 446);
+            this.btnQuit.Location = new System.Drawing.Point(22, 626);
             this.btnQuit.Name = "btnQuit";
-            this.btnQuit.Size = new System.Drawing.Size(135, 26);
+            this.btnQuit.Size = new System.Drawing.Size(135, 42);
             this.btnQuit.TabIndex = 21;
             this.btnQuit.Text = "Quit";
             this.btnQuit.UseVisualStyleBackColor = true;
             this.btnQuit.Click += new System.EventHandler(this.btnQuit_Click);
-            // 
-            // lblTotalAmount
-            // 
-            this.lblTotalAmount.AutoSize = true;
-            this.lblTotalAmount.Location = new System.Drawing.Point(388, 223);
-            this.lblTotalAmount.Name = "lblTotalAmount";
-            this.lblTotalAmount.Size = new System.Drawing.Size(76, 13);
-            this.lblTotalAmount.TabIndex = 10;
-            this.lblTotalAmount.Text = "Total Amount :";
             // 
             // AdministratorMenu
             // 
@@ -973,12 +907,6 @@
             this.ClientSize = new System.Drawing.Size(1690, 929);
             this.Controls.Add(this.btnQuit);
             this.Controls.Add(this.pnlR);
-            this.Controls.Add(this.label13);
-            this.Controls.Add(this.label12);
-            this.Controls.Add(this.label10);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.pnlCM);
             this.Controls.Add(this.pnlSM);
             this.Controls.Add(this.pnlSC);
@@ -1070,9 +998,6 @@
         private System.Windows.Forms.Button btnAddProduct;
         private System.Windows.Forms.TextBox txtBUpdateID;
         private System.Windows.Forms.Label lblUpdate;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label lblUpdProductSupplier;
         private System.Windows.Forms.TextBox txtBUPS;
         private System.Windows.Forms.Button btnUpdSupplier;
@@ -1085,7 +1010,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button btnControlStock;
         private System.Windows.Forms.Label lblStockControl;
-        private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label lblSearchCN;
         private System.Windows.Forms.Button btnSearchCN;
         private System.Windows.Forms.TextBox txtBCNS;
@@ -1093,8 +1017,6 @@
         private System.Windows.Forms.Button btnStatusChange;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TextBox txtBUOS;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Panel pnlR;
         private System.Windows.Forms.DataGridView dgvProductInformation;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart1;

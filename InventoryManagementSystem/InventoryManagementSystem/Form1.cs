@@ -10,6 +10,7 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace InventoryManagementSystem
 {
@@ -27,6 +28,10 @@ namespace InventoryManagementSystem
         {
             public static string UserName {  get; set; }
             public static int UserId { get; set; }
+        }
+        public static class GlobalVariablesMail
+        {
+            public static string mailAdress { get; set; }
         }
         public Form1()
         {
@@ -179,19 +184,20 @@ namespace InventoryManagementSystem
                 string userFullName = txtBFName.Text;
                 string userCommInfo = txtBCInfo.Text;
                 string userAddress = txtBAddress.Text;
-
+                string mail = txtBMail.Text;
                 string connectionString = $"server=Alper;database=InventoryManagementSystem;UID=sa;password=1";
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {
                     conn.Open();
                     SqlTransaction transaction = conn.BeginTransaction();
-                        string newsql = "INSERT INTO Users_Table (UserName, Password, Role, Gender) VALUES (@UserName, @Password, 'Customer', @Gender); SELECT SCOPE_IDENTITY();";
+                        string newsql = "INSERT INTO Users_Table (UserName, Password, Role, Gender, Mail) VALUES (@UserName, @Password, 'Customer', @Gender, @Mail); SELECT SCOPE_IDENTITY();";
                         int newUserId;
                         using (SqlCommand command = new SqlCommand(newsql, conn, transaction))
                         {
                             command.Parameters.AddWithValue("@UserName", newUsername);
                             command.Parameters.AddWithValue("@Password", newPassword);
                             command.Parameters.AddWithValue("@Gender",selectedGender);
+                            command.Parameters.AddWithValue("@Mail",mail);
                             newUserId = Convert.ToInt32(command.ExecuteScalar());
                         }
                         string newUserInfosql = "INSERT INTO Customers_Table (UserID, CustomerName, CommunicationInfo, Adress, Gender) VALUES (@UserID, @CustomerName, @CommunicationInfo, @Adress, @Gender)";
@@ -267,31 +273,146 @@ namespace InventoryManagementSystem
                 textBox1.Text = selectedGender;
             }
         }
-
+        private void LinkRPass_LinkClicked_1(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            pnlEmail.Visible = true;
+            pnlLogIn.Visible=false;
+            pnlPersonalInfo.Visible=false;
+            pnlSıgnIn.Visible=false;
+            pnlSıgnOrLog.Visible=false;
+        }
         private void btnSendMail_Click(object sender, EventArgs e)
         {
+            string randomCode = RandomCode(6);
             string senderEmail = "smtpmailsender11@gmail.com";
             string password = "zzgq xmpz tvie ibhh";
-            string receiverEmail = btnSendMail.Text;
+            string receiverEmail = txtBRMail.Text;
             string subject = "Reset Password";
-            string body = "Reset";
+            string body = $"Your reset code : {randomCode}";
             // SMTP sunucusu ve portu
             string smtpServer = "smtp.gmail.com";
-            int port = 587; 
+            int port = 587;
             try
             {
                 using (SmtpClient client = new SmtpClient(smtpServer, port))
                 {
-                    client.EnableSsl = true; 
+                    client.EnableSsl = true;
                     client.Credentials = new NetworkCredential(senderEmail, password);
                     MailMessage mail = new MailMessage(senderEmail, receiverEmail, subject, body);
                     client.Send(mail);
                     MessageBox.Show("Mail Sent");
+                    
                 }
+               
             }
             catch (Exception ex)
             {
                 Console.WriteLine("E-posta gönderilirken hata oluştu: " + ex.InnerException);
+            }
+            string connectionString = $"server=Alper;database=InventoryManagementSystem;UID=sa;password=1";
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                string insertCode = "INSERT INTO UserCode_Table(Mail, Code) VALUES (@Mail, @Code);";
+                using (SqlCommand command = new SqlCommand(insertCode, conn))
+                {
+                    command.Parameters.AddWithValue("@Mail", txtBRMail.Text);
+                    command.Parameters.AddWithValue("@Code", randomCode);
+                    command.ExecuteNonQuery();
+                }
+                conn.Close();
+            }
+            pnlEmail.Visible = false;
+            pnlReset.Visible = true;
+        }
+        private void btnBackM_Click(object sender, EventArgs e)
+        {
+            pnlSıgnOrLog.Visible = true;
+            pnlEmail.Visible=false;
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox1.Checked == true)
+            {
+                txtBNewPM.UseSystemPasswordChar = false;
+                txtBNewPM2.UseSystemPasswordChar = false;
+            }
+            else if (checkBox1.Checked == false)
+            {
+                txtBNewPM.UseSystemPasswordChar = true;
+                txtBNewPM2.UseSystemPasswordChar = true;
+            }
+        }
+
+        private void btnBackNM_Click(object sender, EventArgs e)
+        {
+            pnlReset.Visible = false;
+            pnlEmail.Visible=true;
+        }
+        static string RandomCode(int longs)
+        {
+            const string karakterler = "ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789";
+            StringBuilder sonuc = new StringBuilder();
+            Random rastgele = new Random();
+            for (int i = 0; i < longs; i++)
+            {
+                int index = rastgele.Next(karakterler.Length);
+                sonuc.Append(karakterler[index]);
+            }
+            return sonuc.ToString();
+        }
+
+        private void btnResetPassword_Click(object sender, EventArgs e)
+        {
+            if (txtBNewPM.Text != txtBNewPM2.Text)
+            {
+                MessageBox.Show("Textbox1 ve Textbox2 değerleri aynı değil!", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            string connectionString = $"server=Alper;database=InventoryManagementSystem;UID=sa;password=1";
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    connection.Open();
+                    string selectQuery = "SELECT Password FROM Users_Table WHERE mail = @mail";
+                    SqlCommand selectCommand = new SqlCommand(selectQuery, connection);
+                    selectCommand.Parameters.AddWithValue("@mail", txtBRMail.Text);
+
+                    object result = selectCommand.ExecuteScalar();
+
+                    if (result != null)
+                    {
+                        // Textbox1'deki değeri güncelleyen SQL sorgusu
+                        string updateQuery = "UPDATE Users_Table SET Password = @password WHERE mail = @mail";
+                        SqlCommand updateCommand = new SqlCommand(updateQuery, connection);
+                        updateCommand.Parameters.AddWithValue("@password", txtBNewPM.Text);
+                        updateCommand.Parameters.AddWithValue("@mail", txtBRMail.Text);
+
+                        int rowsAffected = updateCommand.ExecuteNonQuery();
+
+                        if (rowsAffected > 0)
+                        {
+                            MessageBox.Show("Şifre başarıyla güncellendi!", "Başarılı", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            pnlEmail.Visible = false;
+                            pnlReset.Visible = false;
+                            pnlSıgnOrLog.Visible = true;
+                        }
+                        else
+                        {
+                            MessageBox.Show("Şifre güncellenirken bir hata oluştu!", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Girilen mail veritabanında bulunamadı!", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Bir hata oluştu: " + ex.Message, "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
     }

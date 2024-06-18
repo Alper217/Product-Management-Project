@@ -58,21 +58,35 @@
             this.lblFN = new System.Windows.Forms.Label();
             this.btnSıgnIn = new System.Windows.Forms.Button();
             this.pnlSıgnIn = new System.Windows.Forms.Panel();
+            this.txtBMail = new System.Windows.Forms.TextBox();
+            this.lblMail = new System.Windows.Forms.Label();
             this.btnBack1 = new System.Windows.Forms.Button();
             this.chkBxShowPassword2 = new System.Windows.Forms.CheckBox();
             this.pnlLogIn = new System.Windows.Forms.Panel();
             this.LinkRPass = new System.Windows.Forms.LinkLabel();
             this.lblBack = new System.Windows.Forms.Button();
             this.pnlEmail = new System.Windows.Forms.Panel();
+            this.btnBackM = new System.Windows.Forms.Button();
             this.btnSendMail = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtBRMail = new System.Windows.Forms.TextBox();
+            this.pnlReset = new System.Windows.Forms.Panel();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txtBCC = new System.Windows.Forms.TextBox();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtBNewPM2 = new System.Windows.Forms.TextBox();
+            this.btnBackNM = new System.Windows.Forms.Button();
+            this.btnResetPassword = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txtBNewPM = new System.Windows.Forms.TextBox();
             this.pnlSıgnOrLog.SuspendLayout();
             this.pnlPersonalInfo.SuspendLayout();
             this.pnlSıgnIn.SuspendLayout();
             this.pnlLogIn.SuspendLayout();
             this.pnlEmail.SuspendLayout();
+            this.pnlReset.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnUserSıgnIn
@@ -115,17 +129,17 @@
             this.btnContinueSıgnIn.FlatAppearance.BorderSize = 0;
             this.btnContinueSıgnIn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnContinueSıgnIn.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnContinueSıgnIn.Location = new System.Drawing.Point(3, 167);
+            this.btnContinueSıgnIn.Location = new System.Drawing.Point(0, 197);
             this.btnContinueSıgnIn.Name = "btnContinueSıgnIn";
             this.btnContinueSıgnIn.Size = new System.Drawing.Size(164, 31);
-            this.btnContinueSıgnIn.TabIndex = 3;
+            this.btnContinueSıgnIn.TabIndex = 5;
             this.btnContinueSıgnIn.Text = "Continue";
             this.btnContinueSıgnIn.UseVisualStyleBackColor = false;
             this.btnContinueSıgnIn.Click += new System.EventHandler(this.btnContinueSıgnIn_Click_1);
             // 
             // lblNewPassword2
             // 
-            this.lblNewPassword2.Location = new System.Drawing.Point(0, 95);
+            this.lblNewPassword2.Location = new System.Drawing.Point(4, 133);
             this.lblNewPassword2.Name = "lblNewPassword2";
             this.lblNewPassword2.Size = new System.Drawing.Size(100, 11);
             this.lblNewPassword2.TabIndex = 5;
@@ -133,7 +147,7 @@
             // 
             // lblNewPassword
             // 
-            this.lblNewPassword.Location = new System.Drawing.Point(0, 47);
+            this.lblNewPassword.Location = new System.Drawing.Point(4, 85);
             this.lblNewPassword.Name = "lblNewPassword";
             this.lblNewPassword.Size = new System.Drawing.Size(100, 11);
             this.lblNewPassword.TabIndex = 4;
@@ -149,18 +163,18 @@
             // 
             // txtBoxPasswordNew2
             // 
-            this.txtBoxPasswordNew2.Location = new System.Drawing.Point(3, 109);
+            this.txtBoxPasswordNew2.Location = new System.Drawing.Point(7, 147);
             this.txtBoxPasswordNew2.Name = "txtBoxPasswordNew2";
             this.txtBoxPasswordNew2.Size = new System.Drawing.Size(157, 20);
-            this.txtBoxPasswordNew2.TabIndex = 2;
+            this.txtBoxPasswordNew2.TabIndex = 3;
             this.txtBoxPasswordNew2.UseSystemPasswordChar = true;
             // 
             // txtBoxPasswordNew1
             // 
-            this.txtBoxPasswordNew1.Location = new System.Drawing.Point(3, 61);
+            this.txtBoxPasswordNew1.Location = new System.Drawing.Point(7, 99);
             this.txtBoxPasswordNew1.Name = "txtBoxPasswordNew1";
             this.txtBoxPasswordNew1.Size = new System.Drawing.Size(157, 20);
-            this.txtBoxPasswordNew1.TabIndex = 1;
+            this.txtBoxPasswordNew1.TabIndex = 2;
             this.txtBoxPasswordNew1.UseSystemPasswordChar = true;
             // 
             // txtBoxUsernameNew
@@ -368,6 +382,8 @@
             // pnlSıgnIn
             // 
             this.pnlSıgnIn.BackColor = System.Drawing.Color.White;
+            this.pnlSıgnIn.Controls.Add(this.txtBMail);
+            this.pnlSıgnIn.Controls.Add(this.lblMail);
             this.pnlSıgnIn.Controls.Add(this.btnBack1);
             this.pnlSıgnIn.Controls.Add(this.btnContinueSıgnIn);
             this.pnlSıgnIn.Controls.Add(this.txtBoxPasswordNew1);
@@ -377,11 +393,26 @@
             this.pnlSıgnIn.Controls.Add(this.lblNewPassword);
             this.pnlSıgnIn.Controls.Add(this.lblUsernameNew);
             this.pnlSıgnIn.Controls.Add(this.chkBxShowPassword2);
-            this.pnlSıgnIn.Location = new System.Drawing.Point(512, 223);
+            this.pnlSıgnIn.Location = new System.Drawing.Point(505, 202);
             this.pnlSıgnIn.Name = "pnlSıgnIn";
-            this.pnlSıgnIn.Size = new System.Drawing.Size(228, 200);
+            this.pnlSıgnIn.Size = new System.Drawing.Size(208, 228);
             this.pnlSıgnIn.TabIndex = 6;
             this.pnlSıgnIn.Visible = false;
+            // 
+            // txtBMail
+            // 
+            this.txtBMail.Location = new System.Drawing.Point(7, 61);
+            this.txtBMail.Name = "txtBMail";
+            this.txtBMail.Size = new System.Drawing.Size(157, 20);
+            this.txtBMail.TabIndex = 1;
+            // 
+            // lblMail
+            // 
+            this.lblMail.Location = new System.Drawing.Point(4, 44);
+            this.lblMail.Name = "lblMail";
+            this.lblMail.Size = new System.Drawing.Size(100, 14);
+            this.lblMail.TabIndex = 8;
+            this.lblMail.Text = "E-Mail";
             // 
             // btnBack1
             // 
@@ -391,7 +422,7 @@
             this.btnBack1.FlatAppearance.BorderSize = 0;
             this.btnBack1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBack1.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnBack1.Location = new System.Drawing.Point(172, 3);
+            this.btnBack1.Location = new System.Drawing.Point(155, 3);
             this.btnBack1.Name = "btnBack1";
             this.btnBack1.Size = new System.Drawing.Size(53, 23);
             this.btnBack1.TabIndex = 6;
@@ -402,10 +433,10 @@
             // chkBxShowPassword2
             // 
             this.chkBxShowPassword2.AutoSize = true;
-            this.chkBxShowPassword2.Location = new System.Drawing.Point(3, 144);
+            this.chkBxShowPassword2.Location = new System.Drawing.Point(7, 175);
             this.chkBxShowPassword2.Name = "chkBxShowPassword2";
             this.chkBxShowPassword2.Size = new System.Drawing.Size(102, 17);
-            this.chkBxShowPassword2.TabIndex = 3;
+            this.chkBxShowPassword2.TabIndex = 4;
             this.chkBxShowPassword2.Text = "Show Password";
             this.chkBxShowPassword2.UseVisualStyleBackColor = true;
             this.chkBxShowPassword2.CheckedChanged += new System.EventHandler(this.chkBxShowPassword2_CheckedChanged);
@@ -437,6 +468,7 @@
             this.LinkRPass.TabIndex = 10;
             this.LinkRPass.TabStop = true;
             this.LinkRPass.Text = "Forgot Password";
+            this.LinkRPass.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LinkRPass_LinkClicked_1);
             // 
             // lblBack
             // 
@@ -457,15 +489,26 @@
             // pnlEmail
             // 
             this.pnlEmail.BackColor = System.Drawing.Color.LightGray;
+            this.pnlEmail.Controls.Add(this.btnBackM);
             this.pnlEmail.Controls.Add(this.btnSendMail);
             this.pnlEmail.Controls.Add(this.label3);
             this.pnlEmail.Controls.Add(this.label2);
-            this.pnlEmail.Controls.Add(this.textBox2);
-            this.pnlEmail.Location = new System.Drawing.Point(673, 553);
+            this.pnlEmail.Controls.Add(this.txtBRMail);
+            this.pnlEmail.Location = new System.Drawing.Point(155, 116);
             this.pnlEmail.Name = "pnlEmail";
             this.pnlEmail.Size = new System.Drawing.Size(575, 422);
             this.pnlEmail.TabIndex = 11;
             this.pnlEmail.Visible = false;
+            // 
+            // btnBackM
+            // 
+            this.btnBackM.Location = new System.Drawing.Point(520, 3);
+            this.btnBackM.Name = "btnBackM";
+            this.btnBackM.Size = new System.Drawing.Size(52, 25);
+            this.btnBackM.TabIndex = 4;
+            this.btnBackM.Text = "Back";
+            this.btnBackM.UseVisualStyleBackColor = true;
+            this.btnBackM.Click += new System.EventHandler(this.btnBackM_Click);
             // 
             // btnSendMail
             // 
@@ -473,7 +516,7 @@
             this.btnSendMail.Name = "btnSendMail";
             this.btnSendMail.Size = new System.Drawing.Size(188, 32);
             this.btnSendMail.TabIndex = 3;
-            this.btnSendMail.Text = "Reset";
+            this.btnSendMail.Text = "Send";
             this.btnSendMail.UseVisualStyleBackColor = true;
             this.btnSendMail.Click += new System.EventHandler(this.btnSendMail_Click);
             // 
@@ -496,13 +539,115 @@
             this.label2.TabIndex = 1;
             this.label2.Text = "E-Mail";
             // 
-            // textBox2
+            // txtBRMail
             // 
-            this.textBox2.Location = new System.Drawing.Point(130, 177);
-            this.textBox2.Multiline = true;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(296, 33);
-            this.textBox2.TabIndex = 0;
+            this.txtBRMail.Location = new System.Drawing.Point(130, 177);
+            this.txtBRMail.Multiline = true;
+            this.txtBRMail.Name = "txtBRMail";
+            this.txtBRMail.Size = new System.Drawing.Size(296, 33);
+            this.txtBRMail.TabIndex = 0;
+            // 
+            // pnlReset
+            // 
+            this.pnlReset.BackColor = System.Drawing.Color.LightGray;
+            this.pnlReset.Controls.Add(this.label6);
+            this.pnlReset.Controls.Add(this.txtBCC);
+            this.pnlReset.Controls.Add(this.checkBox1);
+            this.pnlReset.Controls.Add(this.label5);
+            this.pnlReset.Controls.Add(this.txtBNewPM2);
+            this.pnlReset.Controls.Add(this.btnBackNM);
+            this.pnlReset.Controls.Add(this.btnResetPassword);
+            this.pnlReset.Controls.Add(this.label4);
+            this.pnlReset.Controls.Add(this.txtBNewPM);
+            this.pnlReset.Location = new System.Drawing.Point(155, 91);
+            this.pnlReset.Name = "pnlReset";
+            this.pnlReset.Size = new System.Drawing.Size(575, 422);
+            this.pnlReset.TabIndex = 12;
+            this.pnlReset.Visible = false;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(138, 44);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(91, 13);
+            this.label6.TabIndex = 9;
+            this.label6.Text = "confirmation code";
+            // 
+            // txtBCC
+            // 
+            this.txtBCC.Location = new System.Drawing.Point(130, 65);
+            this.txtBCC.Multiline = true;
+            this.txtBCC.Name = "txtBCC";
+            this.txtBCC.Size = new System.Drawing.Size(296, 33);
+            this.txtBCC.TabIndex = 8;
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(244, 266);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(102, 17);
+            this.checkBox1.TabIndex = 7;
+            this.checkBox1.Text = "Show Password";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(139, 195);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(108, 13);
+            this.label5.TabIndex = 6;
+            this.label5.Text = "New Password Again";
+            // 
+            // txtBNewPM2
+            // 
+            this.txtBNewPM2.Location = new System.Drawing.Point(130, 215);
+            this.txtBNewPM2.Multiline = true;
+            this.txtBNewPM2.Name = "txtBNewPM2";
+            this.txtBNewPM2.Size = new System.Drawing.Size(296, 33);
+            this.txtBNewPM2.TabIndex = 5;
+            this.txtBNewPM2.UseSystemPasswordChar = true;
+            // 
+            // btnBackNM
+            // 
+            this.btnBackNM.Location = new System.Drawing.Point(520, 3);
+            this.btnBackNM.Name = "btnBackNM";
+            this.btnBackNM.Size = new System.Drawing.Size(52, 25);
+            this.btnBackNM.TabIndex = 4;
+            this.btnBackNM.Text = "Back";
+            this.btnBackNM.UseVisualStyleBackColor = true;
+            this.btnBackNM.Click += new System.EventHandler(this.btnBackNM_Click);
+            // 
+            // btnResetPassword
+            // 
+            this.btnResetPassword.Location = new System.Drawing.Point(190, 321);
+            this.btnResetPassword.Name = "btnResetPassword";
+            this.btnResetPassword.Size = new System.Drawing.Size(188, 32);
+            this.btnResetPassword.TabIndex = 3;
+            this.btnResetPassword.Text = "Reset";
+            this.btnResetPassword.UseVisualStyleBackColor = true;
+            this.btnResetPassword.Click += new System.EventHandler(this.btnResetPassword_Click);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(139, 111);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(78, 13);
+            this.label4.TabIndex = 2;
+            this.label4.Text = "New Password";
+            // 
+            // txtBNewPM
+            // 
+            this.txtBNewPM.Location = new System.Drawing.Point(131, 132);
+            this.txtBNewPM.Multiline = true;
+            this.txtBNewPM.Name = "txtBNewPM";
+            this.txtBNewPM.Size = new System.Drawing.Size(296, 33);
+            this.txtBNewPM.TabIndex = 0;
+            this.txtBNewPM.UseSystemPasswordChar = true;
             // 
             // Form1
             // 
@@ -512,6 +657,7 @@
             this.BackgroundImage = global::InventoryManagementSystem.Properties.Resources.online_smartphone_shopping_banner_vector;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(894, 590);
+            this.Controls.Add(this.pnlReset);
             this.Controls.Add(this.pnlEmail);
             this.Controls.Add(this.pnlSıgnIn);
             this.Controls.Add(this.pnlLogIn);
@@ -530,6 +676,8 @@
             this.pnlLogIn.PerformLayout();
             this.pnlEmail.ResumeLayout(false);
             this.pnlEmail.PerformLayout();
+            this.pnlReset.ResumeLayout(false);
+            this.pnlReset.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -572,9 +720,22 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Panel pnlEmail;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtBRMail;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnSendMail;
+        private System.Windows.Forms.TextBox txtBMail;
+        private System.Windows.Forms.Label lblMail;
+        private System.Windows.Forms.Button btnBackM;
+        private System.Windows.Forms.Panel pnlReset;
+        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox txtBNewPM2;
+        private System.Windows.Forms.Button btnBackNM;
+        private System.Windows.Forms.Button btnResetPassword;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox txtBNewPM;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox txtBCC;
     }
 }
 

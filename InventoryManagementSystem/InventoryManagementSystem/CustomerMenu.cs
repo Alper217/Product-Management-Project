@@ -15,7 +15,7 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace InventoryManagementSystem
 {
-    
+
     public partial class CustomerMenu : Form
     {
         public static class GlobalVariablesTotalPrice
@@ -111,7 +111,7 @@ namespace InventoryManagementSystem
                     if (result != DBNull.Value)
                     {
                         lblTotalAmount.Text = "Total Price: " + result.ToString() + "$";
-                        
+
                     }
                     else
                     {
@@ -123,7 +123,7 @@ namespace InventoryManagementSystem
                     MessageBox.Show("An error occurred: " + ex.Message);
                 }
             }
-            pnlMyShoppingCart.Visible=true;
+            pnlMyShoppingCart.Visible = true;
             pnlMO.Visible = false;
             pnlProducts.Visible = false;
             pnlUS.Visible = false;
@@ -134,6 +134,8 @@ namespace InventoryManagementSystem
             pnlMO.Visible = false;
             pnlProducts.Visible = false;
             pnlUS.Visible = true;
+            txtBSUS.Text = GlobalVariables.UserName;
+            txtBMailUS.Text = GlobalVariablesMail.mailAdress;
         }
         private void btnMO_Click(object sender, EventArgs e)
         {
@@ -366,34 +368,34 @@ namespace InventoryManagementSystem
             }
 
             using (SqlConnection connection2 = new SqlConnection(connectionString))
+            {
+                string currentTime = DateTime.Now.ToString();
+                connection2.Open();
+                string queryStatus = "INSERT INTO OrderInformations_Table (OrderID, CustomerID, ProcessDate, Status, ByWho) VALUES (@OrderID, @CustomerID, @ProcessDate, 'Order Taken', @ByWho);";
+                using (SqlCommand command = new SqlCommand(queryStatus, connection2))
                 {
-                    string currentTime = DateTime.Now.ToString();
-                    connection2.Open();
-                    string queryStatus = "INSERT INTO OrderInformations_Table (OrderID, CustomerID, ProcessDate, Status, ByWho) VALUES (@OrderID, @CustomerID, @ProcessDate, 'Order Taken', @ByWho);";
-                    using (SqlCommand command = new SqlCommand(queryStatus, connection2))
-                    {
-                        command.Parameters.AddWithValue("@OrderID", GlobalVariablesOrders.orderID);
-                        command.Parameters.AddWithValue("@CustomerID", GlobalVariablesCustomer.CustomerId);
-                        command.Parameters.AddWithValue("@ProcessDate", currentTime);
-                        command.Parameters.AddWithValue("@ByWho", GlobalVariables.UserName);
-                        command.ExecuteNonQuery();
-                    }
-                    connection2.Close();
+                    command.Parameters.AddWithValue("@OrderID", GlobalVariablesOrders.orderID);
+                    command.Parameters.AddWithValue("@CustomerID", GlobalVariablesCustomer.CustomerId);
+                    command.Parameters.AddWithValue("@ProcessDate", currentTime);
+                    command.Parameters.AddWithValue("@ByWho", GlobalVariables.UserName);
+                    command.ExecuteNonQuery();
                 }
-                using (SqlConnection connection2 = new SqlConnection(connectionString))
+                connection2.Close();
+            }
+            using (SqlConnection connection2 = new SqlConnection(connectionString))
+            {
+                string currentTime = DateTime.Now.ToString();
+                connection2.Open();
+                string queryStatus = "INSERT INTO OrderDetails_Table (OrderID, ProductID, Piece) VALUES (@OrderID, @ProductID, @Piece);";
+                using (SqlCommand commandDetails = new SqlCommand(queryStatus, connection2))
                 {
-                    string currentTime = DateTime.Now.ToString();
-                    connection2.Open();
-                    string queryStatus = "INSERT INTO OrderDetails_Table (OrderID, ProductID, Piece) VALUES (@OrderID, @ProductID, @Piece);";
-                    using (SqlCommand commandDetails = new SqlCommand(queryStatus, connection2))
-                    {
-                        commandDetails.Parameters.AddWithValue("@OrderID", GlobalVariablesOrders.orderID);
-                        commandDetails.Parameters.AddWithValue("@ProductID", txtBID.Text);
-                        commandDetails.Parameters.AddWithValue("@Piece", GlobalVariablesOrders.orderDetails);
-                        commandDetails.ExecuteNonQuery();   //hatalı buradan kaldım
-                    }
-                    connection2.Close();
+                    commandDetails.Parameters.AddWithValue("@OrderID", GlobalVariablesOrders.orderID);
+                    commandDetails.Parameters.AddWithValue("@ProductID", txtBID.Text);
+                    commandDetails.Parameters.AddWithValue("@Piece", GlobalVariablesOrders.orderDetails);
+                    commandDetails.ExecuteNonQuery();   //hatalı buradan kaldım
                 }
+                connection2.Close();
+            }
         }
 
         // My Orders Buttons
@@ -464,7 +466,7 @@ namespace InventoryManagementSystem
             {
                 MessageBox.Show("Please select a row to delete.");
             }
-           
+
         }
 
         // Çıkış tuşu
@@ -490,7 +492,46 @@ namespace InventoryManagementSystem
                 txtBSelected.Text = selectedID;
             }
         }
-        // Kullanıcı Ayarları kısmı
 
+        private void btnChangePassword_Click(object sender, EventArgs e)
+        {
+            if (txtBNewPassword.Text != txtBNewPassword2.Text)
+            {
+                MessageBox.Show("Olmadı gardaş tekrar dene");
+            }
+            else
+            {
+                string connectionString = $"server=Alper;database=InventoryManagementSystem;UID=sa;password=1";
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+                    string selectQuery = "SELECT Password FROM Users_Table WHERE UserName = @UserName";
+                    SqlCommand selectCommand = new SqlCommand(selectQuery, connection);
+                    selectCommand.Parameters.AddWithValue("@UserName", txtBSUS.Text);
+                    object result = selectCommand.ExecuteScalar();
+
+                    if (result != null && result.ToString() == txtBOldPassword.Text)
+                    {
+                        string updateQuery = "UPDATE Users_Table SET Password = @password WHERE UserName = @UserName";
+                        SqlCommand updateCommand = new SqlCommand(updateQuery, connection);
+                        updateCommand.Parameters.AddWithValue("@password", txtBNewPassword2.Text);
+                        updateCommand.Parameters.AddWithValue("@UserName", txtBSUS.Text);
+                        int rowsAffected = updateCommand.ExecuteNonQuery();
+                        if (rowsAffected > 0)
+                        {
+                            MessageBox.Show("Şifre başarıyla güncellendi.");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Şifre güncellenemedi.");
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Eski şifre yanlış.");
+                    }
+                }
+            }
+        }
     }
 }
