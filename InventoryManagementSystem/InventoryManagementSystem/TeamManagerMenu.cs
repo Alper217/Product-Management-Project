@@ -25,7 +25,6 @@ namespace InventoryManagementSystem
             MinimizeBox = false;
             this.Text = "Online Store";
         }
-
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             txtBStatus.Text = lbOrderStatus.Text;
@@ -149,7 +148,6 @@ namespace InventoryManagementSystem
         }
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            //Update Somethings Stuff
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 conn.Open();
@@ -165,22 +163,21 @@ namespace InventoryManagementSystem
                         int rowsAffected = comm.ExecuteNonQuery();
                         if (rowsAffected > 0)
                         {
-                            MessageBox.Show("Rol başarıyla güncellendi.");
+                            MessageBox.Show("Role Updated Successfully!");
                            
                         }
                         else
                         {
-                            MessageBox.Show("Rol güncelleme işlemi başarısız oldu.");
+                            MessageBox.Show("Role update has been failed!");
                         }
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Geçersiz SupplierID.");
+                    MessageBox.Show("Invalid Supplier ID.");
                 }
             }
             RefreshData();
-            //
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
 

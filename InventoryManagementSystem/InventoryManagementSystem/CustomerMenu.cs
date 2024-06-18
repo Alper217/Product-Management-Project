@@ -191,7 +191,7 @@ namespace InventoryManagementSystem
                 query += " AND ProductName LIKE @ProductName";
             }
 
-            if (int.TryParse(txtBMin.Text, out minAmount))
+            if (int.TryParse(txtBMin.Text, out minAmount))   
             {
                 query += " AND UnitPrice >= @MinAmount";
             }
@@ -369,14 +369,14 @@ namespace InventoryManagementSystem
 
             using (SqlConnection connection2 = new SqlConnection(connectionString))
             {
-                string currentTime = DateTime.Now.ToString();
+                DateTime currentTime = DateTime.Now;
                 connection2.Open();
                 string queryStatus = "INSERT INTO OrderInformations_Table (OrderID, CustomerID, ProcessDate, Status, ByWho) VALUES (@OrderID, @CustomerID, @ProcessDate, 'Order Taken', @ByWho);";
                 using (SqlCommand command = new SqlCommand(queryStatus, connection2))
                 {
                     command.Parameters.AddWithValue("@OrderID", GlobalVariablesOrders.orderID);
                     command.Parameters.AddWithValue("@CustomerID", GlobalVariablesCustomer.CustomerId);
-                    command.Parameters.AddWithValue("@ProcessDate", currentTime);
+                    command.Parameters.AddWithValue("@ProcessDate", currentTime); 
                     command.Parameters.AddWithValue("@ByWho", GlobalVariables.UserName);
                     command.ExecuteNonQuery();
                 }
@@ -492,12 +492,11 @@ namespace InventoryManagementSystem
                 txtBSelected.Text = selectedID;
             }
         }
-
         private void btnChangePassword_Click(object sender, EventArgs e)
         {
             if (txtBNewPassword.Text != txtBNewPassword2.Text)
             {
-                MessageBox.Show("Olmadı gardaş tekrar dene");
+                MessageBox.Show("Passwords don't match");
             }
             else
             {
@@ -519,16 +518,16 @@ namespace InventoryManagementSystem
                         int rowsAffected = updateCommand.ExecuteNonQuery();
                         if (rowsAffected > 0)
                         {
-                            MessageBox.Show("Şifre başarıyla güncellendi.");
+                            MessageBox.Show("Password updated susccessfully.");
                         }
                         else
                         {
-                            MessageBox.Show("Şifre güncellenemedi.");
+                            MessageBox.Show("Password could not updated.");
                         }
                     }
                     else
                     {
-                        MessageBox.Show("Eski şifre yanlış.");
+                        MessageBox.Show("Old password is wrong.");
                     }
                 }
             }

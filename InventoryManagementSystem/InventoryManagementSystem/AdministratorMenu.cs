@@ -122,8 +122,6 @@ namespace InventoryManagementSystem
 
             DataTable dataTable = new DataTable();
 
-            try
-            {
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     using (SqlCommand command = new SqlCommand(query, connection))
@@ -141,14 +139,9 @@ namespace InventoryManagementSystem
                 }
                 else
                 {
-                    MessageBox.Show("Tablo boş. Gösterilecek veri bulunamadı.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Table is empty, Not Data.", "INFORMATION", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Veri yüklenirken bir hata oluştu: " + ex.Message, "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
+            
         }
         private void btnSM_Click(object sender, EventArgs e)
         {
@@ -316,7 +309,7 @@ namespace InventoryManagementSystem
                     }
 
                     Series totalAmountSeries = chart2.Series["Total Amount"];
-                    totalAmountSeries.Points.Clear(); // Önceki verileri temizle
+                    totalAmountSeries.Points.Clear(); // Önceki verileri temizle //şu chartları allah kahretmesin ne yapay zeka ne internette video tam değildi beynim yandı hepsinde
                     decimal totalAmount = 0;
                     while (reader.Read())
                     {
@@ -347,11 +340,11 @@ namespace InventoryManagementSystem
                     int rowsAffected = command.ExecuteNonQuery();
                         if (rowsAffected > 0)
                         {
-                            MessageBox.Show("Veri başarıyla eklendi!");
+                            MessageBox.Show("Data added successfully!");
                         }
                         else
                         {
-                            MessageBox.Show("Veri eklenirken bir hata oluştu!");
+                            MessageBox.Show("An error occurred while adding data!");
                         }
                     }
             }
@@ -373,11 +366,11 @@ namespace InventoryManagementSystem
                     int rowsAffected = command.ExecuteNonQuery();
                     if (rowsAffected > 0)
                     {
-                        MessageBox.Show("Veri başarıyla güncellendi!");
+                        MessageBox.Show("Data added successfully!");
                     }
                     else
                     {
-                        MessageBox.Show("Veri güncellenirken bir hata oluştu!");
+                        MessageBox.Show("An error occurred while adding data!");
                     }
                 }
             }
@@ -425,21 +418,21 @@ namespace InventoryManagementSystem
                         int rowsAffected = comm.ExecuteNonQuery();
                         if (rowsAffected > 0)
                         {
-                            MessageBox.Show("Rol başarıyla güncellendi.");
+                            MessageBox.Show("Role updated successfully.");
                         }
                         else
                         {
-                            MessageBox.Show("Rol güncelleme işlemi başarısız oldu.");
+                            MessageBox.Show("Role update has been failed");
                         }
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Geçersiz SupplierID.");
+                    MessageBox.Show("Invalid Supplier ID.");
                 }
             }
         }
-        //User Management Buttons ///////////////////////////////////
+        //User Management Buttons 
         private void btnChange_Click(object sender, EventArgs e)
         {
                 using (SqlConnection conn = new SqlConnection(connectionString))
@@ -454,11 +447,11 @@ namespace InventoryManagementSystem
                         int rowsAffected = comm.ExecuteNonQuery();
                         if (rowsAffected > 0)
                         {
-                            MessageBox.Show("Rol başarıyla güncellendi.");
+                            MessageBox.Show("Role updated successfully.");
                         }
                         else
                         {
-                            MessageBox.Show("Rol güncelleme işlemi başarısız oldu.");
+                            MessageBox.Show("Role updated has been failed.");
                         }
                     }
                 }
@@ -616,16 +609,16 @@ namespace InventoryManagementSystem
                         int rowsAffected = command.ExecuteNonQuery();
                         if (rowsAffected > 0)
                         {
-                            MessageBox.Show("Veri başarıyla güncellendi!");
+                            MessageBox.Show("Data Updated Successfully!");
                         }
                         else
                         {
-                            MessageBox.Show("Belirtilen ID'ye sahip sipariş bulunamadı!");
+                            MessageBox.Show("No order found for the specified id");
                         }
                     }
                     else
                     {
-                        MessageBox.Show("Geçersiz OrderID girdiniz!");
+                        MessageBox.Show("Invalid Order ID");
                     }
                 }
             }

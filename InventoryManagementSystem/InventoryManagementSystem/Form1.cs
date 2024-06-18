@@ -104,7 +104,7 @@ namespace InventoryManagementSystem
 
             if (string.IsNullOrEmpty(txtBoxUsername.Text.Trim()) || string.IsNullOrEmpty(txtBoxPassword.Text.Trim()))
             {
-                MessageBox.Show("Please enter a valid value.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Please enter a valid value", "WARNING", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else
             {
@@ -120,13 +120,11 @@ namespace InventoryManagementSystem
                 {
                     int userId = (int)dt.Rows[0]["UserID"];
                     GlobalVariables.UserId = userId;
+
                     string userName = dt.Rows[0]["UserName"].ToString();
                     GlobalVariables.UserName = userName;
 
-                    // Retrieve the user role
                     string userRole = dt.Rows[0]["Role"].ToString();
-
-                    // Retrieve CustomerID from Customers_Table using UserID
                     string customerSql = "SELECT CustomerID FROM Customers_Table WHERE UserID=@userId";
                     SqlParameter prmCustomer = new SqlParameter("userId", userId);
                     SqlCommand customerCommand = new SqlCommand(customerSql, conn);
@@ -163,7 +161,7 @@ namespace InventoryManagementSystem
                 }
                 else
                 {
-                    MessageBox.Show("Invalid username or password", "Attention", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Invalid username or password", "ATTENTION", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
         }
@@ -264,7 +262,7 @@ namespace InventoryManagementSystem
             pnlPersonalInfo.Visible = false;
             pnlSıgnOrLog.Visible=true;
         }
-
+        // Şifre sıfırlama ve SMTP kodları
         private void lbGender_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (lbGender.SelectedItem != null)
@@ -353,14 +351,14 @@ namespace InventoryManagementSystem
         static string RandomCode(int longs)
         {
             const string karakterler = "ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789";
-            StringBuilder sonuc = new StringBuilder();
-            Random rastgele = new Random();
+            StringBuilder conclusion = new StringBuilder();
+            Random random = new Random();
             for (int i = 0; i < longs; i++)
             {
-                int index = rastgele.Next(karakterler.Length);
-                sonuc.Append(karakterler[index]);
+                int index = random.Next(karakterler.Length);
+                conclusion.Append(karakterler[index]);
             }
-            return sonuc.ToString();
+            return conclusion.ToString();
         }
 
         private void btnResetPassword_Click(object sender, EventArgs e)
@@ -372,9 +370,7 @@ namespace InventoryManagementSystem
             }
             string connectionString = $"server=Alper;database=InventoryManagementSystem;UID=sa;password=1";
             using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                try
-                {
+            { 
                     connection.Open();
                     string selectQuery = "SELECT Password FROM Users_Table WHERE mail = @mail";
                     SqlCommand selectCommand = new SqlCommand(selectQuery, connection);
@@ -384,7 +380,6 @@ namespace InventoryManagementSystem
 
                     if (result != null)
                     {
-                        // Textbox1'deki değeri güncelleyen SQL sorgusu
                         string updateQuery = "UPDATE Users_Table SET Password = @password WHERE mail = @mail";
                         SqlCommand updateCommand = new SqlCommand(updateQuery, connection);
                         updateCommand.Parameters.AddWithValue("@password", txtBNewPM.Text);
@@ -394,25 +389,20 @@ namespace InventoryManagementSystem
 
                         if (rowsAffected > 0)
                         {
-                            MessageBox.Show("Şifre başarıyla güncellendi!", "Başarılı", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            MessageBox.Show("Password Updated Successfully!", "SUCCESSFUL", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             pnlEmail.Visible = false;
                             pnlReset.Visible = false;
                             pnlSıgnOrLog.Visible = true;
                         }
                         else
                         {
-                            MessageBox.Show("Şifre güncellenirken bir hata oluştu!", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show("Error Occurred while updating  the password!", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
                     else
                     {
-                        MessageBox.Show("Girilen mail veritabanında bulunamadı!", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("E-Mail not Found!", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Bir hata oluştu: " + ex.Message, "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
             }
         }
     }
